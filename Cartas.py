@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
+import random as rdm
 
 class cartas():
     
     def __init__(self):
-        self.valor
-        self.nype
+        self.valor #= valor
+        self.nype #= nype
+        
+   # def define_carta(self):
+        
 
 baralho = [['Quatro','Ouros'],
            ['Quatro', 'Espada'], 
@@ -46,5 +50,8 @@ baralho = [['Quatro','Ouros'],
            ['Três', 'Espada'], 
            ['Três', 'Copas'],
            ['Três', 'Paus']]
+           
+escolha = rdm.choice(baralho)
+print (escolha)
 print(baralho)
 print(len(baralho))
