@@ -4,10 +4,10 @@ import random as rdm
 class cartas():
     
     def __init__(self):
-        self.valor #= valor
-        self.nype #= nype
+        self.carta = carta
         
-   # def define_carta(self):
+    def distribui_cartas:
+        
         
 
 baralho = [['Quatro','Ouros'],
