@@ -59,10 +59,11 @@ class baralho:
         
     def comprar_carta(self):
         i = random.randint(0, len(self.cartas)-1)
-        carta = self.cartas[i]
+        print (i)
+        carta = self.nome_cartas[i]
         del self.cartas[i]
         return carta
-        
+       
     def sortear(self):
         sorteio = {1:[self.comprar_carta(),
                       self.comprar_carta(),
