@@ -52,16 +52,30 @@ class baralho:
                              'Três Copas',
                              'Três Paus']
         self.cartas = [x for x in range (40)]
+        self.cartas_em_jogo = []
+        for a in self.cartas:
+            self.cartas_em_jogo.append(a)
+        self.nome_cartas_em_jogo = []
+        for b in self.nome_cartas:
+            self.nome_cartas_em_jogo.append(b)
         
-    def reiniciar(self):
-        self.cartas = self.cartas
-        return self.cartas
+    def reiniciar_cartas_em_jogo(self):
+        self.cartas_em_jogo = self.cartas
+        return self.cartas_em_jogo
+        
+    def reiniciar_nome_cartas_em_jogo(self):
+        self.nome_cartas_em_jogo = self.nome_cartas
+        return self.nome_cartas_em_jogo
         
     def comprar_carta(self):
-        i = random.randint(0, len(self.cartas)-1)
+        i = random.randint(0, len(self.cartas_em_jogo)-1)
         print (i)
-        carta = self.nome_cartas[i]
-        del self.cartas[i]
+        print (self.cartas_em_jogo[i])
+        print (self.nome_cartas_em_jogo[i])
+        numero_carta = self.cartas_em_jogo[i]
+        carta = self.nome_cartas_em_jogo[i]
+        self.cartas_em_jogo.remove(numero_carta)
+        self.nome_cartas_em_jogo.remove(carta)
         return carta
        
     def sortear(self):
@@ -78,13 +92,20 @@ class baralho:
                       self.comprar_carta(),
                       self.comprar_carta()],
                    "Manilha":self.comprar_carta()}
-        self.reiniciar()
+        self.reiniciar_cartas_em_jogo()
+        self.reiniciar_nome_cartas_em_jogo()
         return sorteio
     
 # Teste        
 baralho_de_truco = baralho()
 s = baralho_de_truco.sortear()
 print (s)
-c = baralho_de_truco.reiniciar()
+c = baralho_de_truco.reiniciar_nome_cartas_em_jogo()
 print (c)
-            
+d = baralho_de_truco.reiniciar_cartas_em_jogo()
+print (d)
+ 
+#class jogador:
+
+   # def __init__(self, número, cartas):
+                   
