@@ -35,22 +35,38 @@ class janela_login():
         self.login_cadastro.columnconfigure(2, minsize= 100, weight=1)
         
         self.login_cadastro.configure(background = "green")
+
+        truco_label= tk.Label(self.login_cadastro)
+        truco_label.configure(text= "TRUCO", fg= "white", font= "arial 60 bold", bg= "green")
+        truco_label.grid(row= 1, column=1)        
         
         #Criando espaço para colocar os dados de login
+        texto_nome_login = tk.Label(self.login_cadastro)
+        texto_nome_login.configure(text= "Usuário:", fg= "black", font= "Arial", bg= "green")
+        texto_nome_login.grid(row= 3, column= 0)
         nome_login = tk.Entry(self.login_cadastro)
         nome_login.configure(text= "Nome", bg= "light gray", bd= 3)
         nome_login.grid(row= 3, column= 1, sticky= "nsew")        
         
+        texto_senha_login = tk.Label(self.login_cadastro)
+        texto_senha_login.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
+        texto_senha_login.grid(row= 4, column= 0)
         senha_login = tk.Entry(self.login_cadastro)
         senha_login.configure(text= "Senha", bg= "light gray", bd= 3)
         senha_login.grid(row= 4, column= 1, sticky= "nsew")
         
         #Criando espaço para colocar os dados de Cadastro        
-        
+
+        texto_nome_cadastro = tk.Label(self.login_cadastro)
+        texto_nome_cadastro.configure(text= "Nome do Usuário:", fg= "black", font= "Arial", bg= "green")
+        texto_nome_cadastro.grid(row= 8, column= 0)
         nome_cadastro = tk.Entry(self.login_cadastro)
         nome_cadastro.configure(text= "Nome Cadastro", bg= "light gray", bd= 3)
         nome_cadastro.grid(row= 8, column= 1, sticky= "nsew")        
-        
+
+        texto_senha_cadastro = tk.Label(self.login_cadastro)
+        texto_senha_cadastro.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
+        texto_senha_cadastro.grid(row= 9, column= 0)
         senha_cadastro = tk.Entry(self.login_cadastro)
         senha_cadastro.configure(text= "Senha Cadastro", bg= "light gray", bd= 3)
         senha_cadastro.grid(row= 9, column= 1, sticky= "nsew")
@@ -61,12 +77,12 @@ class janela_login():
         self.botao_login = tk.Button(self.login_cadastro)
         self.botao_login.grid(row= 6, column=1, sticky="nsew")
         self.botao_login.configure(background = "grey")        
-        self.botao_login.configure(text = "Login")
+        self.botao_login.configure(text = "Login", font= "Arial, 20")
  
         self.botao_cadastrar = tk.Button(self.login_cadastro)
         self.botao_cadastrar.grid(row=11 , column= 1, sticky="nsew")
         self.botao_cadastrar.configure(background = "grey")
-        self.botao_cadastrar.configure(text = "Cadastre-se")
+        self.botao_cadastrar.configure(text = "Cadastre-se", font= "Arial, 20")
    
    #Iniciando a Janela
     def inicio(self):
@@ -74,3 +90,5 @@ class janela_login():
 
 janela= janela_login()
 janela.inicio()
+
+#meufirebase.onchange
