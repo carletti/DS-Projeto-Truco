@@ -36,40 +36,45 @@ class janela_login():
         
         self.login_cadastro.configure(background = "green")
 
-        truco_label= tk.Label(self.login_cadastro)
-        truco_label.configure(text= "TRUCO", fg= "white", font= "arial 60 bold", bg= "green")
-        truco_label.grid(row= 1, column=1)        
+        self.truco_label= tk.Label(self.login_cadastro)
+        self.truco_label.configure(text= "TRUCO", fg= "white", font= "arial 60 bold", bg= "green")
+        self.truco_label.grid(row= 1, column=1, sticky="nsew")
+
+        self.naipes_inicio = tk.PhotoImage(file= "naipes inicial.png")
+        self.label_naipes_inicio = tk.Label(self.login_cadastro, image= self.naipes_inicio, height= 0, width= 0, bg= "green")
+        self.label_naipes_inicio.grid(row= 0, column= 0, sticky="nsew")
         
         #Criando espaço para colocar os dados de login
-        texto_nome_login = tk.Label(self.login_cadastro)
-        texto_nome_login.configure(text= "Usuário:", fg= "black", font= "Arial", bg= "green")
-        texto_nome_login.grid(row= 3, column= 0)
-        nome_login = tk.Entry(self.login_cadastro)
-        nome_login.configure(text= "Nome", bg= "light gray", bd= 3)
-        nome_login.grid(row= 3, column= 1, sticky= "nsew")        
+
+        self.texto_nome_login = tk.Label(self.login_cadastro)
+        self.texto_nome_login.configure(text= "Usuário:", fg= "black", font= "Arial", bg= "green")
+        self.texto_nome_login.grid(row= 3, column= 0)
+        self.nome_login = tk.Entry(self.login_cadastro)
+        self.nome_login.configure(text= "Nome", bg= "light gray", bd= 3)
+        self.nome_login.grid(row= 3, column= 1, sticky= "nsew")        
         
-        texto_senha_login = tk.Label(self.login_cadastro)
-        texto_senha_login.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
-        texto_senha_login.grid(row= 4, column= 0)
-        senha_login = tk.Entry(self.login_cadastro)
-        senha_login.configure(text= "Senha", bg= "light gray", bd= 3)
-        senha_login.grid(row= 4, column= 1, sticky= "nsew")
+        self.texto_senha_login = tk.Label(self.login_cadastro)
+        self.texto_senha_login.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
+        self.texto_senha_login.grid(row= 4, column= 0)
+        self.senha_login = tk.Entry(self.login_cadastro)
+        self.senha_login.configure(text= "Senha", bg= "light gray", bd= 3, show="•")
+        self.senha_login.grid(row= 4, column= 1, sticky= "nsew")
         
         #Criando espaço para colocar os dados de Cadastro        
 
-        texto_nome_cadastro = tk.Label(self.login_cadastro)
-        texto_nome_cadastro.configure(text= "Nome do Usuário:", fg= "black", font= "Arial", bg= "green")
-        texto_nome_cadastro.grid(row= 8, column= 0)
-        nome_cadastro = tk.Entry(self.login_cadastro)
-        nome_cadastro.configure(text= "Nome Cadastro", bg= "light gray", bd= 3)
-        nome_cadastro.grid(row= 8, column= 1, sticky= "nsew")        
+        self.texto_nome_cadastro = tk.Label(self.login_cadastro)
+        self.texto_nome_cadastro.configure(text= "Nome do Usuário:", fg= "black", font= "Arial", bg= "green")
+        self.texto_nome_cadastro.grid(row= 8, column= 0)
+        self.nome_cadastro = tk.Entry(self.login_cadastro)
+        self.nome_cadastro.configure(text= "Nome Cadastro", bg= "light gray", bd= 3)
+        self.nome_cadastro.grid(row= 8, column= 1, sticky= "nsew")        
 
-        texto_senha_cadastro = tk.Label(self.login_cadastro)
-        texto_senha_cadastro.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
-        texto_senha_cadastro.grid(row= 9, column= 0)
-        senha_cadastro = tk.Entry(self.login_cadastro)
-        senha_cadastro.configure(text= "Senha Cadastro", bg= "light gray", bd= 3)
-        senha_cadastro.grid(row= 9, column= 1, sticky= "nsew")
+        self.texto_senha_cadastro = tk.Label(self.login_cadastro)
+        self.texto_senha_cadastro.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
+        self.texto_senha_cadastro.grid(row= 9, column= 0)
+        self.senha_cadastro = tk.Entry(self.login_cadastro)
+        self.senha_cadastro.configure(text= "Senha Cadastro", bg= "light gray", bd= 3, show="•")
+        self.senha_cadastro.grid(row= 9, column= 1, sticky= "nsew")
                 
         
         #Criando botões Login e Cadastrar
