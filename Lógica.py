@@ -79,22 +79,22 @@ class baralho:
         return carta
        
     def sortear(self):
-        sorteio = {1:[self.comprar_carta(),
-                      self.comprar_carta(),
-                      self.comprar_carta()],
-                   2:[self.comprar_carta(),
-                      self.comprar_carta(),
-                      self.comprar_carta()],
-                   3:[self.comprar_carta(),
-                      self.comprar_carta(),
-                      self.comprar_carta()],
-                   4:[self.comprar_carta(),
-                      self.comprar_carta(),
-                      self.comprar_carta()],
-                   "Manilha":self.comprar_carta()}
+        self.sorteio = {1:[self.comprar_carta(),
+                       self.comprar_carta(),
+                       self.comprar_carta()],
+                    2:[self.comprar_carta(),
+                       self.comprar_carta(),
+                       self.comprar_carta()],
+                    3:[self.comprar_carta(),
+                       self.comprar_carta(),
+                       self.comprar_carta()],
+                    4:[self.comprar_carta(),
+                       self.comprar_carta(),
+                       self.comprar_carta()],
+                    "Vira":self.comprar_carta()}
         self.reiniciar_cartas_em_jogo()
         self.reiniciar_nome_cartas_em_jogo()
-        return sorteio
+        return self.sorteio
     
 # Teste        
 baralho_de_truco = baralho()
@@ -104,8 +104,18 @@ c = baralho_de_truco.reiniciar_nome_cartas_em_jogo()
 print (c)
 d = baralho_de_truco.reiniciar_cartas_em_jogo()
 print (d)
- 
-#class jogador:
 
-   # def __init__(self, número, cartas):
+class jogador:
+
+    def __init__(self, número, cartas):
+        self.número = número
+        self.cartas = cartas
+        
+    def define_jogador(self):
+        for i, j in self.sorteio:
+            return 'O jogador {0} tem as cartas {1}'.format(i, j)
+            
+jogadores_de_truco = jogador
+a = jogadores_de_truco.define_jogador()
+print (a)
                    
