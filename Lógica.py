@@ -107,15 +107,16 @@ print (d)
 
 class jogador:
 
-    def __init__(self, número, cartas):
+    def __init__(self, cartas, número):
         self.número = número
         self.cartas = cartas
         
     def define_jogador(self):
-        for i, j in self.sorteio:
-            return 'O jogador {0} tem as cartas {1}'.format(i, j)
+        for i in range(4):
+            for i, j in s.items():
+                print ('O jogador {0} tem as cartas {1}'.format(i, j))
             
-jogadores_de_truco = jogador
+jogadores_de_truco = jogador(s.keys, s.values)
 a = jogadores_de_truco.define_jogador()
-print (a)
+
                    
