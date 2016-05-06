@@ -11,7 +11,8 @@ class cartas:
 class baralho:
     
     def __init__(self):
-        self.nome_cartas =  ['Quatro Ouros',
+        self.nome_cartas =  ["a",
+                             'Quatro Ouros',
                              'Quatro Espada', 
                              'Quatro Copas',
                              'Quatro Paus',
@@ -50,8 +51,12 @@ class baralho:
                              'Três Ouros',
                              'Três Espada', 
                              'Três Copas',
-                             'Três Paus']
-        self.cartas = [x for x in range (40)]
+                             'Três Paus',
+                             'Manilha Ouros',
+                             'Manilha Espada',
+                             'Manilha Copas',
+                             'Manilha Paus']
+        self.cartas = [x for x in range (45)]
         self.cartas_em_jogo = []
         for a in self.cartas:
             self.cartas_em_jogo.append(a)
@@ -68,7 +73,7 @@ class baralho:
         return self.nome_cartas_em_jogo
         
     def comprar_carta(self):
-        i = random.randint(0, len(self.cartas_em_jogo)-1)
+        i = random.randint(1, len(self.cartas_em_jogo)-5)
         print (i)
         print (self.cartas_em_jogo[i])
         print (self.nome_cartas_em_jogo[i])
@@ -96,14 +101,17 @@ class baralho:
         self.reiniciar_nome_cartas_em_jogo()
         return self.sorteio
     
-# Teste        
+# Teste       
 baralho_de_truco = baralho()
 s = baralho_de_truco.sortear()
 print (s)
+print ('')
 c = baralho_de_truco.reiniciar_nome_cartas_em_jogo()
 print (c)
+print ('')
 d = baralho_de_truco.reiniciar_cartas_em_jogo()
 print (d)
+print ('')
 
 class jogador:
 
@@ -112,11 +120,48 @@ class jogador:
         self.cartas = cartas
         
     def define_jogador(self):
-        for i in range(4):
             for i, j in s.items():
                 print ('O jogador {0} tem as cartas {1}'.format(i, j))
             
 jogadores_de_truco = jogador(s.keys, s.values)
 a = jogadores_de_truco.define_jogador()
+print ('')
 
-                   
+class mesa:
+
+    def __init__(self, jogador_1, jogador_2, jogador_3, jogador_4, numero_vira):
+        self.jogador_1 = jogador_1
+        self.jogador_2 = jogador_2
+        self.jogador_3 = jogador_3
+        self.jogador_4 = jogador_4
+        self.numero_vira = numero_vira 
+        
+    def define_manilha(self):
+        if self.numero_vira%4 == 0:
+            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 1
+            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 2
+            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 3
+            baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 4
+            return baralho_de_truco.cartas_em_jogo
+        
+        elif self.numero_vira%4 == 0:
+            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 2
+            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 3
+            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 4
+            baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 5
+            return baralho_de_truco.cartas_em_jogo
+        
+        elif self.numero_vira%4 == 0:
+            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 3
+            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 4
+            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 5
+            baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 6
+            return baralho_de_truco.cartas_em_jogo
+            
+        elif self.numero_vira%4 == 0:
+            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 4
+            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 5
+            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 6
+            baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 7
+            return baralho_de_truco.cartas_em_jogo
+            
