@@ -120,8 +120,11 @@ class jogador:
         self.cartas = cartas
         
     def define_jogador(self):
-            for i, j in s.items():
-                print ('O jogador {0} tem as cartas {1}'.format(i, j))
+        self.na_mesa = []
+        for i, j in s.items():
+            self.na_mesa.append([i, j])
+            print ('O jogador {0} tem as cartas {1}'.format(i, j))
+        return self.na_mesa
             
 jogadores_de_truco = jogador(s.keys, s.values)
 a = jogadores_de_truco.define_jogador()
@@ -165,3 +168,21 @@ class mesa:
             baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 7
             return baralho_de_truco.cartas_em_jogo
             
+        else:
+            return -1
+            
+for i in range(len(a)):
+    if i%1 == 0:
+        jogador_2 = a[1]
+    elif i%2 == 0:
+        jogador_3 = a[2]
+    elif i%3 == 0:
+        jogador_4 = a[3]
+    elif i%4 == 0:
+        vira = a[4]
+    else:
+        jogador_1 = a[0]
+        
+mesa_de_truco = mesa(jogador_1, jogador_2, jogador_3, jogador_4, vira)
+m = mesa_de_truco.define_manilha()
+print(m)
