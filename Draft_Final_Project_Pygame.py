@@ -2,20 +2,22 @@ import pygame
 
 #definir parametros
 FPS = 30
-          #R   G    B
+#cores          #R   G    B
 WHITE = (255, 255, 255)
 DARK_GREEN = (0, 100, 0)
 RED = (200, 0, 0)
 BLUE = (0, 0, 255)
 YELLOW = (0, 255, 255)
 
+#tamanho da tela
 WIDTH = 800
 HEIGHT = 600
 
+#tamamho dos elementos
 CARD_WIDTH = 120
 CARD_HEIGHT = 180
 
-TRUCO_WIDTH  = 80
+TRUCO_WIDTH  = 80 #botão pra pedir truco
 TRUCO_HEIGHT = 80
 
 MANILHA_WIDTH = 120
@@ -24,7 +26,7 @@ MANILHA_HEIGHT = 30
 DISPLAY_WIDTH = 120
 DISPLAY_HEIGHT = 180
 
-NAME_WIDTH = 120
+NAME_WIDTH = 120 #NAME  - displaynome dos jogadores
 NAME_HEIGHT = 30
 
 #####################################################
@@ -40,6 +42,8 @@ class Card:
     def draw(self):
         pygame.draw.rect(self.display, WHITE, (self.x, self.y, self.w, self.h))
 
+    
+
 class Button:
     def __init__(self, display, x, y, w, h):
         self.display = display
@@ -50,6 +54,11 @@ class Button:
 
     def draw(self):
         pygame.draw.rect(self.display, RED, (self.x, self.y, self.w, self.h))
+
+    def activate(self, surface):
+        if pygame.event.get_pressed(MOUSEBUTTONDOWN):
+            pass
+            #aparecer para o próximo jogador uma tela com: CAIR, FUGIR
 
 class Info:
     def __init__(self, display, x, y, w, h):
@@ -72,12 +81,6 @@ class Card_Display:
 
     def draw(self):
         pygame.draw.rect(self.display, YELLOW, (self.x, self.y, self.w, self.h))
-        
-
-class Command:
-    def __init__(self, area, x, y):
-        pygame.Rect.move
-        #quando mousebuttondown, sprite move de (x1, y1) para (x2, y2)
         
         
 ###################################################################################
