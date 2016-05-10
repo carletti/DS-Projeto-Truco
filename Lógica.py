@@ -6,7 +6,7 @@ class cartas:
     
     def __init__(self, valor, nype):
         self.valor = valor
-        self. nype = nype
+        self.nype = nype
 
 # Definindo baralho        
 class baralho:
@@ -61,21 +61,17 @@ class baralho:
         # Lista com o número correspondente ao nome das cartas
         self.cartas = [x for x in range (45)]
         # Copiando as listas
-        self.cartas_em_jogo = []
-        for a in self.cartas:
-            self.cartas_em_jogo.append(a)
-        self.nome_cartas_em_jogo = []
-        for b in self.nome_cartas:
-            self.nome_cartas_em_jogo.append(b)
+        self.cartas_em_jogo = self.cartas[:]
+        self.nome_cartas_em_jogo = self.nome_cartas[:]
     
     # Reconfigura a lista de números copiada de acordo com as original    
     def reiniciar_cartas_em_jogo(self):
-        self.cartas_em_jogo = self.cartas
+        self.cartas_em_jogo = self.cartas[:]
         return self.cartas_em_jogo
     
     # Reconfigura a lista de números copiada de acordo com as original    
     def reiniciar_nome_cartas_em_jogo(self):
-        self.nome_cartas_em_jogo = self.nome_cartas
+        self.nome_cartas_em_jogo = self.nome_cartas[:]
         return self.nome_cartas_em_jogo
  
     # Distribiu as cartas para os jogadores e gera o vira       
@@ -88,7 +84,7 @@ class baralho:
         carta = self.nome_cartas_em_jogo[i]
         self.cartas_em_jogo.remove(numero_carta)
         self.nome_cartas_em_jogo.remove(carta)
-        return carta
+        return [carta, numero_carta]
         
     # Chama a função comprar carta e coloca em um dicionário
     def sortear(self):
@@ -112,6 +108,7 @@ class baralho:
 # Teste       
 baralho_de_truco = baralho()
 s = baralho_de_truco.sortear()
+print("BARALHO SORTEADO")
 print (s)
 print ('')
 c = baralho_de_truco.reiniciar_nome_cartas_em_jogo()
@@ -132,13 +129,15 @@ class jogador:
     def define_jogador(self):
         self.na_mesa = []
         for i, j in s.items():
-            self.na_mesa.append([i, j])
+            self.na_mesa.append(j)
             print ('O jogador {0} tem as cartas {1}'.format(i, j))
         return self.na_mesa
 
 # Teste            
 jogadores_de_truco = jogador(s.keys, s.values)
 a = jogadores_de_truco.define_jogador()
+print('')
+print(a)
 print ('')
 
 # Define mesa
@@ -147,15 +146,15 @@ class mesa:
     def __init__(self):
         for i in range(len(a)):
             if i%1 == 0:
-                self.jogador_2 = a[1]
+                self.jogador_2 = a[1][1]
             elif i%2 == 0:
-                self.jogador_3 = a[2]
+                self.jogador_3 = a[2][1]
             elif i%3 == 0:
-                self.jogador_4 = a[3]
+                self.jogador_4 = a[3][1]
             elif i%4 == 0:
-                self.numero_vira = a[4]
+                self.numero_vira = a[4][1]
             else:
-                self.jogador_1 = a[0]
+                self.jogador_1 = a[0][1]
 
     
     # Define a manilha    
