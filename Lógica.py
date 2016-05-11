@@ -2,19 +2,17 @@
 import random
 
 # Definindo cartas
-class cartas:
-    
-    def __init__(self, valor, nype):
+class cartas:    
+    def __init__(self, valor, naipe):
         self.valor = valor
-        self.nype = nype
+        self.naipe = naipe
 
 # Definindo baralho        
 class baralho:
     
     def __init__(self):
         # Lista com o nome das cartas
-        self.nome_cartas =  ["a",
-                             'Quatro Ouros',
+        self.nome_cartas =  ['Quatro Ouros',
                              'Quatro Espada', 
                              'Quatro Copas',
                              'Quatro Paus',
@@ -59,7 +57,7 @@ class baralho:
                              'Manilha Copas',
                              'Manilha Paus']
         # Lista com o número correspondente ao nome das cartas
-        self.cartas = [x for x in range (45)]
+        self.cartas = [x for x in range(44)]
         # Copiando as listas
         self.cartas_em_jogo = self.cartas[:]
         self.nome_cartas_em_jogo = self.nome_cartas[:]
@@ -76,7 +74,7 @@ class baralho:
  
     # Distribiu as cartas para os jogadores e gera o vira       
     def comprar_carta(self):
-        i = random.randint(1, len(self.cartas_em_jogo)-5)
+        i = random.randint(0, len(self.cartas_em_jogo)-5)
         print (i)
         print (self.cartas_em_jogo[i])
         print (self.nome_cartas_em_jogo[i])
@@ -107,16 +105,19 @@ class baralho:
     
 # Teste       
 baralho_de_truco = baralho()
-s = baralho_de_truco.sortear()
+baralho_de_truco.sortear()
+
 print("BARALHO SORTEADO")
-print (s)
-print ('')
-c = baralho_de_truco.reiniciar_nome_cartas_em_jogo()
-print (c)
-print ('')
-d = baralho_de_truco.reiniciar_cartas_em_jogo()
-print (d)
-print ('')
+print(baralho_de_truco.sorteio)
+print()
+
+baralho_de_truco.reiniciar_nome_cartas_em_jogo()
+print(baralho_de_truco.nome_cartas_em_jogo)
+print()
+
+baralho_de_truco.reiniciar_cartas_em_jogo()
+print(baralho_de_truco.cartas_em_jogo)
+print()
 
 # Defini jogador
 class jogador:
@@ -124,6 +125,12 @@ class jogador:
     def __init__(self, cartas, número):
         self.número = número
         self.cartas = cartas
+        
+        self.jogador_1 = [a[0]]
+        self.jogador_2 = [a[1]]
+        self.jogador_3 = [a[2]]
+        self.jogador_4 = [a[3]]
+        self.numero_vira = [a[4]]
     
     # Defini qual jogador esta com qual carta em coloca em uma lista     
     def define_jogador(self):
@@ -144,52 +151,45 @@ print ('')
 class mesa:
 
     def __init__(self):
-        for i in range(len(a)):
-            if i%1 == 0:
-                self.jogador_2 = a[1][1]
-            elif i%2 == 0:
-                self.jogador_3 = a[2][1]
-            elif i%3 == 0:
-                self.jogador_4 = a[3][1]
-            elif i%4 == 0:
-                self.numero_vira = a[4][1]
-            else:
-                self.jogador_1 = a[0][1]
-
-    
+        self.jogador_1 = a[0][1]
+        self.jogador_2 = a[1][1]
+        self.jogador_3 = a[2][1]
+        self.jogador_4 = a[3][1]
+        self.numero_vira = a[4][1]
+            
     # Define a manilha    
     def define_manilha(self):
 
-        # Quando vira o vira é de paus
+        # Quando vira o vira é de our0s
         if self.numero_vira%4 == 0:
+            baralho_de_truco.cartas_em_jogo[40] = self.numero_vira + 4
+            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 5
+            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 6
+            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 7
+            return baralho_de_truco.cartas_em_jogo
+        
+        # Quando vira o vira é de espada
+        elif self.numero_vira%4 == 1:
+            baralho_de_truco.cartas_em_jogo[40] = self.numero_vira + 3
+            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 4
+            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 5
+            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 6
+            return baralho_de_truco.cartas_em_jogo
+       
+        # Quando vira o vira é de copas
+        elif self.numero_vira%4 == 2:
+            baralho_de_truco.cartas_em_jogo[40] = self.numero_vira + 2
+            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 3
+            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 4
+            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 5
+            return baralho_de_truco.cartas_em_jogo
+           
+        # Quando vira o vira é de paus
+        elif self.numero_vira%4 == 3:
             baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 1
             baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 2
             baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 3
             baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 4
-            return baralho_de_truco.cartas_em_jogo
-        
-        # Quando vira o vira é de copas
-        elif self.numero_vira%4 == 0:
-            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 2
-            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 3
-            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 4
-            baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 5
-            return baralho_de_truco.cartas_em_jogo
-       
-        # Quando vira o vira é de espada
-        elif self.numero_vira%4 == 0:
-            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 3
-            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 4
-            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 5
-            baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 6
-            return baralho_de_truco.cartas_em_jogo
-           
-        # Quando vira o vira é de ouros
-        elif self.numero_vira%4 == 0:
-            baralho_de_truco.cartas_em_jogo[41] = self.numero_vira + 4
-            baralho_de_truco.cartas_em_jogo[42] = self.numero_vira + 5
-            baralho_de_truco.cartas_em_jogo[43] = self.numero_vira + 6
-            baralho_de_truco.cartas_em_jogo[44] = self.numero_vira + 7
             return baralho_de_truco.cartas_em_jogo
          
         # Se der problema
