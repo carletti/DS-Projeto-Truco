@@ -9,7 +9,7 @@ class janela_login():
         #Criando Janela do Jogo
         self.login_cadastro = tk.Tk()
         self.login_cadastro.title("Truco")
-        self.login_cadastro.geometry("750x600+150+150")
+        self.login_cadastro.geometry("750x600+200+40")
         
         #Definindo Layout da Janela
         
@@ -21,7 +21,7 @@ class janela_login():
         self.login_cadastro.rowconfigure(4, minsize= 40, weight=1)        
         self.login_cadastro.rowconfigure(5, minsize= 10, weight=1)
         self.login_cadastro.rowconfigure(6, minsize= 40, weight=1)       
-        self.login_cadastro.rowconfigure(7, minsize= 40, weight=1)
+        self.login_cadastro.rowconfigure(7, minsize= 30, weight=1)
         self.login_cadastro.rowconfigure(8, minsize= 40, weight=1)
         self.login_cadastro.rowconfigure(9, minsize= 40, weight=1)
         self.login_cadastro.rowconfigure(10, minsize= 10, weight=1)
@@ -51,7 +51,7 @@ class janela_login():
         self.texto_nome_login.grid(row= 3, column= 0)
         self.nome_login = tk.Entry(self.login_cadastro)
         self.nome_login.configure(text= "Nome", bg= "light gray", bd= 3)
-        self.nome_login.grid(row= 3, column= 1, sticky= "nsew")        
+        self.nome_login.grid(row= 3, column= 1, sticky= "nsew")                
         
         self.texto_senha_login = tk.Label(self.login_cadastro)
         self.texto_senha_login.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
@@ -59,6 +59,7 @@ class janela_login():
         self.senha_login = tk.Entry(self.login_cadastro)
         self.senha_login.configure(text= "Senha", bg= "light gray", bd= 3, show="•")
         self.senha_login.grid(row= 4, column= 1, sticky= "nsew")
+        self.senha_login.bind("<Return>", self.apertou_enter_login)
         
         #Criando espaço para colocar os dados de Cadastro        
 
@@ -75,23 +76,65 @@ class janela_login():
         self.senha_cadastro = tk.Entry(self.login_cadastro)
         self.senha_cadastro.configure(text= "Senha Cadastro", bg= "light gray", bd= 3, show="•")
         self.senha_cadastro.grid(row= 9, column= 1, sticky= "nsew")
-                
+        self.senha_cadastro.bind("<Return>", self.apertou_enter_cadastro)        
         
         #Criando botões Login e Cadastrar
  
         self.botao_login = tk.Button(self.login_cadastro)
         self.botao_login.grid(row= 6, column=1, sticky="nsew")
         self.botao_login.configure(background = "grey")        
-        self.botao_login.configure(text = "Login", font= "Arial, 20")
+        self.botao_login.configure(text = "Login", font= "Arial, 20", command= self.login_clicado)
+ 
  
         self.botao_cadastrar = tk.Button(self.login_cadastro)
         self.botao_cadastrar.grid(row=11 , column= 1, sticky="nsew")
         self.botao_cadastrar.configure(background = "grey")
-        self.botao_cadastrar.configure(text = "Cadastre-se", font= "Arial, 20")
-   
-   #Iniciando a Janela
+        self.botao_cadastrar.configure(text = "Cadastre-se", font= "Arial, 20", command=self.cadastro_clicado)
+        
+      #  self.mensagem_apelido_em_uso = tk.Message(self.login_cadastro)
+       # self.mensagem_apelido_em_uso.grid(row= 7, column = 1, sticky= "nsew")
+        #self.mensagem_apelido_em_uso.configure(text= "Este apelido ja está em uso", bg= "light yellow", width= 0.1, aspect= 75)
+    
+    #Criando funções
+
+    def cadastro_clicado(self):
+        nome = self.nome_cadastro.get()
+        senha = self.senha_cadastro.get()
+        if nome in cadastrados:
+            self.mensagem_apelido_em_uso == True            
+            tk.messagebox.showinfo("Cadastros", "O apelido já está em uso")
+        else:
+            cadastrados[nome] = senha
+            print (cadastrados)
+        self.nome_cadastro.delete(0, 'end')
+        self.senha_cadastro.delete(0, 'end')
+
+    def login_clicado(self):
+        nome = self.nome_login.get()
+        senha = self.senha_login.get()
+        if nome not in cadastrados:
+            tk.messagebox.showinfo("Login", "Usuário não encontrado")
+        if nome in cadastrados:
+            senha_correta = cadastrados[nome]
+            if senha == senha_correta:
+                print ("Acesso liberado")
+            else:
+                tk.messagebox.showinfo("Login", "Senha Incorreta")
+        self.nome_login.delete(0, 'end')
+        self.senha_login.delete(0,'end')
+
+
+    def apertou_enter_login(self, event):
+        self.login_clicado()
+    
+    def apertou_enter_cadastro(self, event):
+        self.cadastro_clicado()
+
+    #Iniciando a Janela
     def inicio(self):
         self.login_cadastro.mainloop()
+
+cadastrados = dict()
 
 janela= janela_login()
 janela.inicio()
