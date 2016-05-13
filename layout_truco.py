@@ -160,20 +160,64 @@ class Screen:
 
         #Construindo as colunas
         self.screen.columnconfigure(0, minsize = 10, weight = 1)
-        self.screen.columnconfigure(1, minsize = 100, weight = 1)
+        self.screen.columnconfigure(1, minsize = 125, weight = 1)
         self.screen.columnconfigure(2, minsize = 10, weight = 1)
-        self.screen.columnconfigure(3, minsize = 100, weight = 1)
+        self.screen.columnconfigure(3, minsize = 125, weight = 1)
         self.screen.columnconfigure(4, minsize = 10, weight = 1)
-        self.screen.columnconfigure(5, minsize = 100, weight = 1)
+        self.screen.columnconfigure(5, minsize = 125, weight = 1)
         self.screen.columnconfigure(6, minsize = 10, weight = 1)
-        self.screen.columnconfigure(7, minsize = 100, weight = 1)
+        self.screen.columnconfigure(7, minsize = 125, weight = 1)
         self.screen.columnconfigure(8, minsize = 10, weight = 1)
-        self.screen.columnconfigure(9, minsize = 100, weight = 1)
+        self.screen.columnconfigure(9, minsize = 125, weight = 1)
         self.screen.columnconfigure(10, minsize = 10, weight = 1)
+
+        #Adicionando as imagens das cartas
+
+        self.As_Ouros=tk.PhotoImage(file= "A_pica.png")
+        self.As_Espadas=tk.PhotoImage(file= "A_espadas.png")
+        self.As_Copas=tk.PhotoImage(file= "A_copas.png")
+        self.As_Paus=tk.PhotoImage(file= "A_zap.png")
+        self.Dois_Ouros=tk.PhotoImage(file= "2_pica.png")
+        self.Dois_Espadas=tk.PhotoImage(file= "2_espadas.png")
+        self.Dois_Copas=tk.PhotoImage(file= "2_copas.png")
+        self.Dois_Paus=tk.PhotoImage(file= "2_zap.png")
+        self.Tres_Ouros=tk.PhotoImage(file= "3_pica.png")
+        self.Tres_Espadas=tk.PhotoImage(file= "3_espadas.png")
+        self.Tres_Copas=tk.PhotoImage(file= "3_copas.png")
+        self.Tres_Paus=tk.PhotoImage(file= "3_zap.png")
+        self.Quatro_Ouros=tk.PhotoImage(file= "4_pica.png")
+        self.Quatro_Espadas=tk.PhotoImage(file= "4_espadas.png")
+        self.Quatro_Copas=tk.PhotoImage(file= "4_copas.png")
+        self.Quatro_Paus=tk.PhotoImage(file= "4_zap.png")
+        self.Cinco_Ouros=tk.PhotoImage(file= "5_pica.png")
+        self.Cinco_Espadas=tk.PhotoImage(file= "5_espadas.png")
+        self.Cinco_Copas=tk.PhotoImage(file= "5_copas.png")
+        self.Cinco_Paus=tk.PhotoImage(file= "5_zap.png")
+        self.Seis_Ouros=tk.PhotoImage(file= "6_pica.png")
+        self.Seis_Espadas=tk.PhotoImage(file= "6_espadas.png")
+        self.Seis_Copas=tk.PhotoImage(file= "6_copas.png")
+        self.Seis_Paus=tk.PhotoImage(file= "6_zap.png")
+        self.Sete_Ouros=tk.PhotoImage(file= "7_pica.png")
+        self.Sete_Espadas=tk.PhotoImage(file= "7_espadas.png")
+        self.Sete_Copas=tk.PhotoImage(file= "7_copas.png")
+        self.Sete_Paus=tk.PhotoImage(file= "7_zap.png")
+        self.Dama_Ouros=tk.PhotoImage(file= "Q_pica.png")
+        self.Dama_Espadas=tk.PhotoImage(file= "Q_espadas.png")
+        self.Dama_Copas=tk.PhotoImage(file= "Q_copas.png")
+        self.Dama_Paus=tk.PhotoImage(file= "Q_zap.png")
+        self.Valete_Ouros=tk.PhotoImage(file= "J_pica.png")
+        self.Valete_Espadas=tk.PhotoImage(file= "J_espadas.png")
+        self.Valete_Copas=tk.PhotoImage(file= "J_copas.png")
+        self.Valete_Paus=tk.PhotoImage(file= "J_zap.png")
+        self.Rei_Ouros=tk.PhotoImage(file= "K_pica.png")
+        self.Rei_Espadas=tk.PhotoImage(file= "K_espadas.png")
+        self.Rei_Copas=tk.PhotoImage(file= "K_copa.png")
+        self.Rei_Copas=tk.PhotoImage(file= "K_copa.png")
+        self.Rei_Paus=tk.PhotoImage(file= "K_zap.png")
 
         #Cartas
         self.carta_1_jogador_1 = tk.Button(self.screen)
-        self.carta_1_jogador_1.configure(text = 'Carta 1', bg = 'white', command= self.carta_1_jogador_1_clicada)
+        self.carta_1_jogador_1.configure(text = 'Carta 1', bg = 'green', command= self.carta_1_jogador_1_clicada, image= self.Dama_Ouros, bd= 0)
         self.carta_1_jogador_1.grid(row = 1, column = 1, sticky= "nsew")
         
         self.carta_2_jogador_1 = tk.Button(self.screen)
@@ -183,13 +227,6 @@ class Screen:
         self.carta_3_jogador_1 = tk.Button(self.screen)
         self.carta_3_jogador_1.configure(bg = 'white', text = 'Carta 3', command= self.carta_3_jogador_1_clicada)
         self.carta_3_jogador_1.grid(row = 1, column = 5, sticky= "nsew")
-        
-        #Botão para pedir TRUCO!
-     #   truco = tk.Button(self.screen)
-     #   truco.configure(text = 'TRUCO !')
-     #   truco.configure(width = 15, height = 5)
-     #   truco.configure(bg = 'red')
-     #   truco.grid(row = 2, column = 0)
 
         #Displays - em canvas
         self.carta_1_jogador_2 = tk.Button(self.screen)
@@ -224,8 +261,12 @@ class Screen:
         versus.configure(text= "X", font= "arial 56 bold", bg= "green")
         versus.grid(row= 3, column= 5, sticky= "nsew")
     
+        
+
+    #Criando os Callbacks dos botões
+
     def carta_1_jogador_1_clicada(self):
-        self.carta_1_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
+        self.carta_1_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "", image= None)
 
     def carta_2_jogador_1_clicada(self):
         self.carta_2_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
@@ -250,7 +291,501 @@ app = Screen()
 app.start()
 
 #Sincronizando o Layout com a lógica do jogo
-    
+
+    #Colocando a primeira carta do jogador 1 no layout
+if jogo.mao_1[0] == "Ás Ouros":
+    screen.carta_1_jogador_1.configure(image=self.As_Ouros)
+elif jogo.mao_1[0] == "Ás Espadas":
+    screen.carta_1_jogador_1.configure(image= self.As_Espadas)
+elif jogo.mao_1[0] == "Ás Copas":
+    screen.carta_1_jogador_1.configure(image= self.As_Copas)
+elif jogo.mao_1[0] == "Ás Paus":
+    screen.carta_1_jogador_1.configure(image= self.As_Paus)
+elif jogo.mao_1[0] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Ouros)
+elif jogo.mao_1[0] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Espadas)
+elif jogo.mao_1[0] == "Dois Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Copas)
+elif jogo.mao_1[0] == "Dois Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Paus)
+elif jogo.mao_1[0] == "Tres Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Ouros)
+elif jogo.mao_1[0] == "Tres Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Espadas)
+elif jogo.mao_1[0] == "Tres Copas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Copas)
+elif jogo.mao_1[0] == "Tres Paus":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Paus)
+elif jogo.mao_1[0] == "Quatro Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Ouros)
+elif jogo.mao_1[0] == "Quatro Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Espadas)
+elif jogo.mao_1[0] == "Quatro Copas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Copas)
+elif jogo.mao_1[0] == "Quatro Paus":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Paus)
+elif jogo.mao_1[0] == "Cinco Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Ouros)
+elif jogo.mao_1[0] == "Cinco Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Espadas)
+elif jogo.mao_1[0] == "Cinco Copas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Copas)
+elif jogo.mao_1[0] == "Cinco Paus":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Paus)
+elif jogo.mao_1[0] == "Seis Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Ouros)
+elif jogo.mao_1[0] == "Seis Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Espadas)
+elif jogo.mao_1[0] == "Seis Copas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Copas)
+elif jogo.mao_1[0] == "Seis Paus":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Paus)
+elif jogo.mao_1[0] == "Sete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Ouros)
+elif jogo.mao_1[0] == "Sete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Espadas)
+elif jogo.mao_1[0] == "Sete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Copas)
+elif jogo.mao_1[0] == "Sete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Paus)
+elif jogo.mao_1[0] == "Dama Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Ouros)
+elif jogo.mao_1[0] == "Dama Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Espadas)
+elif jogo.mao_1[0] == "Dama Copas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Copas)
+elif jogo.mao_1[0] == "Dama Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Paus)
+elif jogo.mao_1[0] == "Valete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Ouros)
+elif jogo.mao_1[0] == "Valete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Espadas)
+elif jogo.mao_1[0] == "Valete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Copas)
+elif jogo.mao_1[0] == "Valete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Paus)
+elif jogo.mao_1[0] == "Rei Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Ouros)
+elif jogo.mao_1[0] == "Rei Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Espadas)
+elif jogo.mao_1[0] == "Rei Copas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Copas)
+elif jogo.mao_1[0] == "Rei Paus":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Paus)
+
+    #Colocando a segunda carta do jogador 1 no Layout
+if jogo.mao_1[1] == "Ás Ouros":
+    screen.carta_1_jogador_1.configure(image=self.As_Ouros)
+elif jogo.mao_1[1] == "Ás Espadas":
+    screen.carta_1_jogador_1.configure(image= self.As_Espadas)
+elif jogo.mao_1[1] == "Ás Copas":
+    screen.carta_1_jogador_1.configure(image= self.As_Copas)
+elif jogo.mao_1[1] == "Ás Paus":
+    screen.carta_1_jogador_1.configure(image= self.As_Paus)
+elif jogo.mao_1[1] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Ouros)
+elif jogo.mao_1[1] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Espadas)
+elif jogo.mao_1[1] == "Dois Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Copas)
+elif jogo.mao_1[1] == "Dois Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Paus)
+elif jogo.mao_1[1] == "Tres Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Ouros)
+elif jogo.mao_1[1] == "Tres Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Espadas)
+elif jogo.mao_1[1] == "Tres Copas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Copas)
+elif jogo.mao_1[1] == "Tres Paus":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Paus)
+elif jogo.mao_1[1] == "Quatro Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Ouros)
+elif jogo.mao_1[1] == "Quatro Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Espadas)
+elif jogo.mao_1[1] == "Quatro Copas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Copas)
+elif jogo.mao_1[1] == "Quatro Paus":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Paus)
+elif jogo.mao_1[1] == "Cinco Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Ouros)
+elif jogo.mao_1[1] == "Cinco Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Espadas)
+elif jogo.mao_1[1] == "Cinco Copas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Copas)
+elif jogo.mao_1[1] == "Cinco Paus":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Paus)
+elif jogo.mao_1[1] == "Seis Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Ouros)
+elif jogo.mao_1[1] == "Seis Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Espadas)
+elif jogo.mao_1[1] == "Seis Copas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Copas)
+elif jogo.mao_1[1] == "Seis Paus":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Paus)
+elif jogo.mao_1[1] == "Sete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Ouros)
+elif jogo.mao_1[1] == "Sete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Espadas)
+elif jogo.mao_1[1] == "Sete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Copas)
+elif jogo.mao_1[1] == "Sete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Paus)
+elif jogo.mao_1[1] == "Dama Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Ouros)
+elif jogo.mao_1[1] == "Dama Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Espadas)
+elif jogo.mao_1[1] == "Dama Copas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Copas)
+elif jogo.mao_1[1] == "Dama Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Paus)
+elif jogo.mao_1[1] == "Valete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Ouros)
+elif jogo.mao_1[1] == "Valete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Espadas)
+elif jogo.mao_1[1] == "Valete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Copas)
+elif jogo.mao_1[1] == "Valete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Paus)
+elif jogo.mao_1[1] == "Rei Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Ouros)
+elif jogo.mao_1[1] == "Rei Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Espadas)
+elif jogo.mao_1[1] == "Rei Copas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Copas)
+elif jogo.mao_1[1] == "Rei Paus":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Paus)
+
+    #Colocando a terceira carta do jogador 1 no Layout
+
+if jogo.mao_1[2] == "Ás Ouros":
+    screen.carta_1_jogador_1.configure(image=self.As_Ouros)
+elif jogo.mao_1[2] == "Ás Espadas":
+    screen.carta_1_jogador_1.configure(image= self.As_Espadas)
+elif jogo.mao_1[2] == "Ás Copas":
+    screen.carta_1_jogador_1.configure(image= self.As_Copas)
+elif jogo.mao_1[2] == "Ás Paus":
+    screen.carta_1_jogador_1.configure(image= self.As_Paus)
+elif jogo.mao_1[2] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Ouros)
+elif jogo.mao_1[2] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Espadas)
+elif jogo.mao_1[2] == "Dois Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Copas)
+elif jogo.mao_1[2] == "Dois Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Paus)
+elif jogo.mao_1[2] == "Tres Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Ouros)
+elif jogo.mao_1[2] == "Tres Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Espadas)
+elif jogo.mao_1[2] == "Tres Copas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Copas)
+elif jogo.mao_1[2] == "Tres Paus":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Paus)
+elif jogo.mao_1[2] == "Quatro Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Ouros)
+elif jogo.mao_1[2] == "Quatro Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Espadas)
+elif jogo.mao_1[2] == "Quatro Copas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Copas)
+elif jogo.mao_1[2] == "Quatro Paus":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Paus)
+elif jogo.mao_1[2] == "Cinco Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Ouros)
+elif jogo.mao_1[2] == "Cinco Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Espadas)
+elif jogo.mao_1[2] == "Cinco Copas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Copas)
+elif jogo.mao_1[2] == "Cinco Paus":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Paus)
+elif jogo.mao_1[2] == "Seis Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Ouros)
+elif jogo.mao_1[2] == "Seis Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Espadas)
+elif jogo.mao_1[2] == "Seis Copas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Copas)
+elif jogo.mao_1[2] == "Seis Paus":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Paus)
+elif jogo.mao_1[2] == "Sete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Ouros)
+elif jogo.mao_1[2] == "Sete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Espadas)
+elif jogo.mao_1[2] == "Sete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Copas)
+elif jogo.mao_1[2] == "Sete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Paus)
+elif jogo.mao_1[2] == "Dama Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Ouros)
+elif jogo.mao_1[2] == "Dama Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Espadas)
+elif jogo.mao_1[2] == "Dama Copas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Copas)
+elif jogo.mao_1[2] == "Dama Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Paus)
+elif jogo.mao_1[2] == "Valete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Ouros)
+elif jogo.mao_1[2] == "Valete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Espadas)
+elif jogo.mao_1[2] == "Valete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Copas)
+elif jogo.mao_1[2] == "Valete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Paus)
+elif jogo.mao_1[2] == "Rei Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Ouros)
+elif jogo.mao_1[2] == "Rei Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Espadas)
+elif jogo.mao_1[2] == "Rei Copas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Copas)
+elif jogo.mao_1[2] == "Rei Paus":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Paus)
+
+    #Colocando a primeira carta do jogador 2 no Layout
+if jogo.mao_2[0] == "Ás Ouros":
+    screen.carta_1_jogador_1.configure(image=self.As_Ouros)
+elif jogo.mao_2[0] == "Ás Espadas":
+    screen.carta_1_jogador_1.configure(image= self.As_Espadas)
+elif jogo.mao_2[0] == "Ás Copas":
+    screen.carta_1_jogador_1.configure(image= self.As_Copas)
+elif jogo.mao_2[0] == "Ás Paus":
+    screen.carta_1_jogador_1.configure(image= self.As_Paus)
+elif jogo.mao_2[0] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Ouros)
+elif jogo.mao_2[0] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Espadas)
+elif jogo.mao_2[0] == "Dois Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Copas)
+elif jogo.mao_2[0] == "Dois Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Paus)
+elif jogo.mao_2[0] == "Tres Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Ouros)
+elif jogo.mao_2[0] == "Tres Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Espadas)
+elif jogo.mao_2[0] == "Tres Copas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Copas)
+elif jogo.mao_2[0] == "Tres Paus":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Paus)
+elif jogo.mao_2[0] == "Quatro Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Ouros)
+elif jogo.mao_2[0] == "Quatro Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Espadas)
+elif jogo.mao_2[0] == "Quatro Copas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Copas)
+elif jogo.mao_2[0] == "Quatro Paus":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Paus)
+elif jogo.mao_2[0] == "Cinco Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Ouros)
+elif jogo.mao_2[0] == "Cinco Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Espadas)
+elif jogo.mao_2[0] == "Cinco Copas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Copas)
+elif jogo.mao_2[0] == "Cinco Paus":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Paus)
+elif jogo.mao_2[0] == "Seis Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Ouros)
+elif jogo.mao_2[0] == "Seis Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Espadas)
+elif jogo.mao_2[0] == "Seis Copas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Copas)
+elif jogo.mao_2[0] == "Seis Paus":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Paus)
+elif jogo.mao_2[0] == "Sete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Ouros)
+elif jogo.mao_2[0] == "Sete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Espadas)
+elif jogo.mao_2[0] == "Sete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Copas)
+elif jogo.mao_2[0] == "Sete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Paus)
+elif jogo.mao_2[0] == "Dama Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Ouros)
+elif jogo.mao_2[0] == "Dama Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Espadas)
+elif jogo.mao_2[0] == "Dama Copas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Copas)
+elif jogo.mao_2[0] == "Dama Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Paus)
+elif jogo.mao_2[0] == "Valete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Ouros)
+elif jogo.mao_2[0] == "Valete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Espadas)
+elif jogo.mao_2[0] == "Valete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Copas)
+elif jogo.mao_2[0] == "Valete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Paus)
+elif jogo.mao_2[0] == "Rei Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Ouros)
+elif jogo.mao_2[0] == "Rei Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Espadas)
+elif jogo.mao_2[0] == "Rei Copas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Copas)
+elif jogo.mao_2[0] == "Rei Paus":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Paus)
+
+    #Colocando a segunda carta do jogador 2 no Layout
+
+if jogo.mao_2[1] == "Ás Ouros":
+    screen.carta_1_jogador_1.configure(image=self.As_Ouros)
+elif jogo.mao_2[1] == "Ás Espadas":
+    screen.carta_1_jogador_1.configure(image= self.As_Espadas)
+elif jogo.mao_2[1] == "Ás Copas":
+    screen.carta_1_jogador_1.configure(image= self.As_Copas)
+elif jogo.mao_2[1] == "Ás Paus":
+    screen.carta_1_jogador_1.configure(image= self.As_Paus)
+elif jogo.mao_2[1] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Ouros)
+elif jogo.mao_2[1] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Espadas)
+elif jogo.mao_2[1] == "Dois Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Copas)
+elif jogo.mao_2[1] == "Dois Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Paus)
+elif jogo.mao_2[1] == "Tres Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Ouros)
+elif jogo.mao_2[1] == "Tres Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Espadas)
+elif jogo.mao_2[1] == "Tres Copas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Copas)
+elif jogo.mao_2[1] == "Tres Paus":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Paus)
+elif jogo.mao_2[1] == "Quatro Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Ouros)
+elif jogo.mao_2[1] == "Quatro Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Espadas)
+elif jogo.mao_2[1] == "Quatro Copas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Copas)
+elif jogo.mao_2[1] == "Quatro Paus":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Paus)
+elif jogo.mao_2[1] == "Cinco Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Ouros)
+elif jogo.mao_2[1] == "Cinco Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Espadas)
+elif jogo.mao_2[1] == "Cinco Copas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Copas)
+elif jogo.mao_2[1] == "Cinco Paus":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Paus)
+elif jogo.mao_2[1] == "Seis Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Ouros)
+elif jogo.mao_2[1] == "Seis Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Espadas)
+elif jogo.mao_2[1] == "Seis Copas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Copas)
+elif jogo.mao_2[1] == "Seis Paus":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Paus)
+elif jogo.mao_2[1] == "Sete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Ouros)
+elif jogo.mao_2[1] == "Sete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Espadas)
+elif jogo.mao_2[1] == "Sete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Copas)
+elif jogo.mao_2[1] == "Sete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Paus)
+elif jogo.mao_2[1] == "Dama Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Ouros)
+elif jogo.mao_2[1] == "Dama Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Espadas)
+elif jogo.mao_2[1] == "Dama Copas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Copas)
+elif jogo.mao_2[1] == "Dama Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Paus)
+elif jogo.mao_2[1] == "Valete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Ouros)
+elif jogo.mao_2[1] == "Valete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Espadas)
+elif jogo.mao_2[1] == "Valete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Copas)
+elif jogo.mao_2[1] == "Valete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Paus)
+elif jogo.mao_2[1] == "Rei Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Ouros)
+elif jogo.mao_2[1] == "Rei Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Espadas)
+elif jogo.mao_2[1] == "Rei Copas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Copas)
+elif jogo.mao_2[1] == "Rei Paus":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Paus)
+
+    #Colocando a terceira carta do jogador 2 no Layout
+
+if jogo.mao_2[2] == "Ás Ouros":
+    screen.carta_1_jogador_1.configure(image=self.As_Ouros)
+elif jogo.mao_2[2] == "Ás Espadas":
+    screen.carta_1_jogador_1.configure(image= self.As_Espadas)
+elif jogo.mao_2[2] == "Ás Copas":
+    screen.carta_1_jogador_1.configure(image= self.As_Copas)
+elif jogo.mao_2[2] == "Ás Paus":
+    screen.carta_1_jogador_1.configure(image= self.As_Paus)
+elif jogo.mao_2[2] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Ouros)
+elif jogo.mao_2[2] == "Dois Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Espadas)
+elif jogo.mao_2[2] == "Dois Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Copas)
+elif jogo.mao_2[2] == "Dois Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dois_Paus)
+elif jogo.mao_2[2] == "Tres Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Ouros)
+elif jogo.mao_2[2] == "Tres Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Espadas)
+elif jogo.mao_2[2] == "Tres Copas":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Copas)
+elif jogo.mao_2[2] == "Tres Paus":
+    screen.carta_1_jogador_1.configure(image= self.Tres_Paus)
+elif jogo.mao_2[2] == "Quatro Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Ouros)
+elif jogo.mao_2[2] == "Quatro Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Espadas)
+elif jogo.mao_2[2] == "Quatro Copas":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Copas)
+elif jogo.mao_2[2] == "Quatro Paus":
+    screen.carta_1_jogador_1.configure(image= self.Quatro_Paus)
+elif jogo.mao_2[2] == "Cinco Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Ouros)
+elif jogo.mao_2[2] == "Cinco Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Espadas)
+elif jogo.mao_2[2] == "Cinco Copas":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Copas)
+elif jogo.mao_2[2] == "Cinco Paus":
+    screen.carta_1_jogador_1.configure(image= self.Cinco_Paus)
+elif jogo.mao_2[2] == "Seis Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Ouros)
+elif jogo.mao_2[2] == "Seis Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Espadas)
+elif jogo.mao_2[2] == "Seis Copas":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Copas)
+elif jogo.mao_2[2] == "Seis Paus":
+    screen.carta_1_jogador_1.configure(image= self.Seis_Paus)
+elif jogo.mao_2[2] == "Sete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Ouros)
+elif jogo.mao_2[2] == "Sete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Espadas)
+elif jogo.mao_2[2] == "Sete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Copas)
+elif jogo.mao_2[2] == "Sete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Sete_Paus)
+elif jogo.mao_2[2] == "Dama Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Ouros)
+elif jogo.mao_2[2] == "Dama Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Espadas)
+elif jogo.mao_2[2] == "Dama Copas":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Copas)
+elif jogo.mao_2[2] == "Dama Paus":
+    screen.carta_1_jogador_1.configure(image= self.Dama_Paus)
+elif jogo.mao_2[2] == "Valete Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Ouros)
+elif jogo.mao_2[2] == "Valete Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Espadas)
+elif jogo.mao_2[2] == "Valete Copas":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Copas)
+elif jogo.mao_2[2] == "Valete Paus":
+    screen.carta_1_jogador_1.configure(image= self.Valete_Paus)
+elif jogo.mao_2[2] == "Rei Ouros":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Ouros)
+elif jogo.mao_2[2] == "Rei Espadas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Espadas)
+elif jogo.mao_2[2] == "Rei Copas":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Copas)
+elif jogo.mao_2[2] == "Rei Paus":
+    screen.carta_1_jogador_1.configure(image= self.Rei_Paus)
 
 while jogo.resultado == 0:
     if jogo.jogador == 1:
