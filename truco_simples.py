@@ -122,9 +122,9 @@ class Jogo:
                     self.jogador = 2
                 self.inicia_round()
                 
-                if self.pontos_1 == 3:
+                if self.pontos_1 == 12:
                     self.resultado = 1
-                elif self.pontos_2 == 3:
+                elif self.pontos_2 == 12:
                     self.resultado = 2                
 
     def inicia_mao(self):
