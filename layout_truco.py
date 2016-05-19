@@ -1,34 +1,9 @@
 # -*- coding: utf-8 -*-
 import tkinter as tk
 import random
-
-# Definindo cartas
-class Carta:
-    """ Carta do jogo de truco
-    O valor vai de 0 a 9 representando as cartas 4, 5, ..., 3
-    O naipe vai de 0 a 3 representando os naipes 
-        ["Ouros", "Espada", "Copas", "Paus"] """
-        
-    valor_to_str = ["Quatro", "Cinco", "Seis", "Sete", "Dama",
-                    "Valete", "Rei", "Ás", "Dois", "Três"]
-    
-    naipe_to_str = ["Ouros", "Espada", "Copas", "Paus"]
-        
-    def __init__(self, valor, naipe):
-        self.valor = valor
-        self.naipe = naipe
-        
-    def valor_str(self):
-        return Carta.valor_to_str[self.valor]
-
-    def naipe_str(self):
-        return Carta.naipe_to_str[self.naipe]
-        
-    def valor_carta(self):
-        return 4*self.valor + self.naipe
-        
-    def __str__(self):
-        return self.valor_str() + " " + self.naipe_str()
+from truco_simples import Carta
+from truco_simples import Baralho
+from truco_simples import Jogo
  
 def valor_to_carta(valor):
     valor_carta = valor // 4
@@ -44,27 +19,7 @@ def compara_cartas(carta1, carta2):
     else:
         return 2
 
-class Baralho:
-    def __init__(self):
-        self.reinicia()
-        
-    def reinicia(self):
-        self.baralho = list(range(40))
-        
-    def sortear_carta(self):
-        k = random.randint(0, len(self.baralho) - 1)
-        valor_carta = self.baralho[k]
-        del self.baralho[k]
-        return valor_carta
-    
-    def sortear_mao(self):
-        mao = []
-        for i in range(3):
-            valor_carta = self.sortear_carta()
-            carta = valor_to_carta(valor_carta)
-            mao.append(carta)
-        return mao
-            
+
 def jogada(jogador, mao):
       
     print("Cartas do jogador {0}".format(jogador))
@@ -74,78 +29,11 @@ def jogada(jogador, mao):
     c = int(input("Escolha sua carta: "))
     return c
 
-class Jogo:
-    def __init__(self):
-        self.baralho = Baralho()
- 
-        self.resultado = 0 
- 
-        self.jogador = 1
-        
-        self.pontos_1 = 0
-        self.pontos_2 = 0
-        self.inicia_round()
-
-    def recebe_jogada(self, indice_carta_na_mao):
-        if self.jogador == 1:
-            self.mesa_1 = self.mao_1[indice_carta_na_mao]
-            self.mao_1[indice_carta_na_mao] = None
-            self.jogador = 2
-        else:
-            self.mesa_2 = self.mao_2[indice_carta_na_mao]
-            self.mao_2[indice_carta_na_mao] = None
-            self.jogador = 1
-            
-        self.cartas_jogadas += 1
-        
-        if self.cartas_jogadas == 2:
-            # Verifica quem ganhou esta mao.
-            if compara_cartas(self.mesa_1, self.mesa_2) == 1:
-                print("jogador 1 venceu esta mao")
-                self.pontos_do_round_jogador_1 += 1
-                self.jogador = 1
-            else:
-                print("jogador 2 venceu esta mao")
-                self.pontos_do_round_jogador_2 += 1
-                self.jogador = 2
-                
-            self.inicia_mao()
-            
-            # Verifica se o round acabou.
-            if self.pontos_do_round_jogador_1 >= 2 or \
-               self.pontos_do_round_jogador_2 >= 2:
-                if self.pontos_do_round_jogador_1 > self.pontos_do_round_jogador_2:
-                    print("Jogador 1 ganhou o round")
-                    self.pontos_1 += 1
-                    self.jogador = 1
-                else:
-                    print("Jogador 2 ganhou o round")
-                    self.pontos_2 += 1
-                    self.jogador = 2
-                self.inicia_round()
-                
-                if self.pontos_1 == 3:
-                    self.resultado = 1
-                elif self.pontos_2 == 3:
-                    self.resultado = 2                
-
-    def inicia_mao(self):
-        self.cartas_jogadas = 0
- 
-    def inicia_round(self):
-        self.baralho.reinicia()
-
-        self.mao_1 = self.baralho.sortear_mao()
-        self.mao_2 = self.baralho.sortear_mao()
-
-        self.pontos_do_round_jogador_1 = 0        
-        self.pontos_do_round_jogador_2 = 0
-        
-        self.inicia_mao()
-
 class Screen:
     def __init__(self, jogo):
-        self.jogo = jogo
+        self.jogo = Jogo()
+        self.baralho = Baralho()
+        self.carta = Carta()
         
         self.screen = tk.Tk()        
         self.screen.title('Truco')
@@ -262,8 +150,8 @@ class Screen:
             "Rei Paus": self.Rei_Paus 
         }
         
-        while jogo.resultado == 0:
-            if jogo.jogador == 1:
+        while self.jogo.resultado == 0:
+            if self.jogo.jogador == 1:
                 c = jogada(1, jogo.mao_1)
 
         #Cartas
