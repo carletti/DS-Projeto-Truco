@@ -5,11 +5,6 @@ from truco_simples import Carta
 from truco_simples import Baralho
 from truco_simples import Jogo
  
-def valor_to_carta(valor):
-    valor_carta = valor // 4
-    naipe_carta = valor % 4
-    nova_carta = Carta(valor_carta, naipe_carta)
-    return nova_carta
 
 def compara_cartas(carta1, carta2):
     v1 = carta1.valor_carta()
@@ -30,10 +25,10 @@ def jogada(jogador, mao):
     return c
 
 class Screen:
+    
     def __init__(self, jogo):
         self.jogo = Jogo()
         self.baralho = Baralho()
-        self.carta = Carta()
         
         self.screen = tk.Tk()        
         self.screen.title('Truco')
@@ -203,6 +198,13 @@ class Screen:
         versus.configure(text= "X", font= "arial 56 bold", bg= "green")
         versus.grid(row= 3, column= 5, sticky= "nsew")
     
+    def valor_to_carta(valor):
+        valor_carta = valor // 4
+        naipe_carta = valor % 4
+        nova_carta = Carta(valor_carta, naipe_carta)
+        Screen.carta = Carta(valor_carta, naipe_carta)
+        return nova_carta    
+
 
     def desenha_carta(self):
         self.carta_1_jogador_1.configure(
@@ -242,9 +244,9 @@ class Screen:
     def start(self):
         self.screen.mainloop()
 
-jogo = Jogo()
-app = Screen(jogo)
+app = Screen()
 app.start()
+jogo = Jogo()
 
 while jogo.resultado == 0:
     if jogo.jogador == 1:

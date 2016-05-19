@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as tk
+import pickle
+
+arquivo = open("cadastrados.pickle", "rb")
+cadastrados = pickle.load(arquivo)
 
 class janela_login():
     
@@ -47,14 +51,14 @@ class janela_login():
         #Criando espaço para colocar os dados de login
 
         self.texto_nome_login = tk.Label(self.login_cadastro)
-        self.texto_nome_login.configure(text= "Usuário:", fg= "black", font= "Arial", bg= "green")
+        self.texto_nome_login.configure(text= "Usuário:", fg= "black", font= "Arial, 14", bg= "green")
         self.texto_nome_login.grid(row= 3, column= 0)
         self.nome_login = tk.Entry(self.login_cadastro)
         self.nome_login.configure(text= "Nome", bg= "light gray", bd= 3)
         self.nome_login.grid(row= 3, column= 1, sticky= "nsew")                
         
         self.texto_senha_login = tk.Label(self.login_cadastro)
-        self.texto_senha_login.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
+        self.texto_senha_login.configure(text= "Senha do Usuário:", fg= "black", font= "Arial, 14", bg= "green")
         self.texto_senha_login.grid(row= 4, column= 0)
         self.senha_login = tk.Entry(self.login_cadastro)
         self.senha_login.configure(text= "Senha", bg= "light gray", bd= 3, show="•")
@@ -64,14 +68,14 @@ class janela_login():
         #Criando espaço para colocar os dados de Cadastro        
 
         self.texto_nome_cadastro = tk.Label(self.login_cadastro)
-        self.texto_nome_cadastro.configure(text= "Nome do Usuário:", fg= "black", font= "Arial", bg= "green")
+        self.texto_nome_cadastro.configure(text= "Nome do Usuário:", fg= "black", font= "Arial, 14", bg= "green")
         self.texto_nome_cadastro.grid(row= 8, column= 0)
         self.nome_cadastro = tk.Entry(self.login_cadastro)
         self.nome_cadastro.configure(text= "Nome Cadastro", bg= "light gray", bd= 3)
         self.nome_cadastro.grid(row= 8, column= 1, sticky= "nsew")        
 
         self.texto_senha_cadastro = tk.Label(self.login_cadastro)
-        self.texto_senha_cadastro.configure(text= "Senha do Usuário:", fg= "black", font= "Arial", bg= "green")
+        self.texto_senha_cadastro.configure(text= "Senha do Usuário:", fg= "black", font= "Arial, 14", bg= "green")
         self.texto_senha_cadastro.grid(row= 9, column= 0)
         self.senha_cadastro = tk.Entry(self.login_cadastro)
         self.senha_cadastro.configure(text= "Senha Cadastro", bg= "light gray", bd= 3, show="•")
@@ -90,10 +94,6 @@ class janela_login():
         self.botao_cadastrar.grid(row=11 , column= 1, sticky="nsew")
         self.botao_cadastrar.configure(background = "grey")
         self.botao_cadastrar.configure(text = "Cadastre-se", font= "Arial, 20", command=self.cadastro_clicado)
-        
-      #  self.mensagem_apelido_em_uso = tk.Message(self.login_cadastro)
-       # self.mensagem_apelido_em_uso.grid(row= 7, column = 1, sticky= "nsew")
-        #self.mensagem_apelido_em_uso.configure(text= "Este apelido ja está em uso", bg= "light yellow", width= 0.1, aspect= 75)
     
     #Criando funções
 
@@ -101,8 +101,7 @@ class janela_login():
         nome = self.nome_cadastro.get()
         senha = self.senha_cadastro.get()
         if nome in cadastrados:
-            self.mensagem_apelido_em_uso == True            
-            tk.messagebox.showinfo("Cadastros", "O apelido já está em uso")
+            self.texto_nome_cadastro.configure(text= "Este Apelido já está em uso. Tente outro nome.")
         else:
             cadastrados[nome] = senha
             print (cadastrados)
@@ -134,9 +133,48 @@ class janela_login():
     def inicio(self):
         self.login_cadastro.mainloop()
 
-cadastrados = dict()
-
 janela= janela_login()
 janela.inicio()
+arquivo.close()
 
 #meufirebase.onchange
+
+'''##PRIMEIRA PAGINA
+
+
+import pickle
+
+arquivo = open("teste.pickle", "wb")
+
+
+
+meus_dados = {
+    'leo': [
+        '011197', 
+        'leo@gmail.com', 
+        ['casa', 'livro'], 
+        {'casa': ['9999', 'ap'], 
+         'livro': ['10', 'caderno']}
+    ]
+}
+
+
+pickle.dump(meus_dados, arquivo)
+
+
+arquivo.close()
+
+
+#SEGUNDA PAGINA
+
+
+import pickle
+
+arquivo = open("teste.pickle", "rb")
+
+
+dados = pickle.load(arquivo)
+print(dados)
+
+arquivo.close()
+'''
