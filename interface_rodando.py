@@ -1,31 +1,11 @@
-# -*- coding: utf-8 -*-
 import tkinter as tk
 from truco_simples import Jogo
- 
-
-def compara_cartas(carta1, carta2):
-    v1 = carta1.valor_carta()
-    v2 = carta2.valor_carta()
-    if v1 > v2:
-        return 1
-    else:
-        return 2
-
-
-def jogada(jogador, mao):
-      
-    print("Cartas do jogador {0}".format(jogador))
-    for carta in mao:
-        print(carta, end=" ; ")
-    print()
-    c = int(input("Escolha sua carta: "))
-    return c
 
 class Screen:
     
-    def __init__(self, jogo):
-        self.jogo = Jogo()
-
+    def __init__(self):
+        
+        self.jogo = Jogo()   
         self.screen = tk.Tk()        
         self.screen.title('Truco')
         self.screen.geometry('650x600+300+50')
@@ -140,39 +120,32 @@ class Screen:
             "Rei Copas": self.Rei_Copas ,
             "Rei Paus": self.Rei_Paus 
         }
-        
-        while self.jogo.resultado == 0:
-            if self.jogo.jogador == 1:
-                c = jogada(1, jogo.mao_1)
 
         #Cartas
-                self.carta_1_jogador_1 = tk.Button(self.screen)
-                self.carta_1_jogador_1.configure(text = 'Carta 1', bg = 'green', command= self.carta_1_jogador_1_clicada, bd= 0, image=self.imagens_carta[self.jogo.mao_2[0]])
-                self.carta_1_jogador_1.grid(row = 1, column = 1, sticky= "nsew")
+        self.carta_1_jogador_1 = tk.Button(self.screen)
+        self.carta_1_jogador_1.configure(text = 'Carta 1', bg = 'green', command= self.carta_1_jogador_1_clicada, bd= 0, image= self.imagens_carta["Ás Copas"])
+        self.carta_1_jogador_1.grid(row = 1, column = 1, sticky= "nsew")
         
-                self.carta_2_jogador_1 = tk.Button(self.screen)
-                self.carta_2_jogador_1.configure(bg = 'green', text = 'Carta 2', command= self.carta_2_jogador_1_clicada, bd= 0, image=self.imagens_carta[self.jogo.mao_2[1]])
-                self.carta_2_jogador_1.grid(row = 1, column = 3, sticky= "nsew")
+        self.carta_2_jogador_1 = tk.Button(self.screen)
+        self.carta_2_jogador_1.configure(bg = 'green', text = 'Carta 2', command= self.carta_2_jogador_1_clicada, bd= 0)
+        self.carta_2_jogador_1.grid(row = 1, column = 3, sticky= "nsew")
         
-                self.carta_3_jogador_1 = tk.Button(self.screen)
-                self.carta_3_jogador_1.configure(bg = 'green', text = 'Carta 3', command= self.carta_3_jogador_1_clicada, bd= 0, image=self.imagens_carta[self.jogo.mao_2[2]])
-                self.carta_3_jogador_1.grid(row = 1, column = 5, sticky= "nsew")
+        self.carta_3_jogador_1 = tk.Button(self.screen)
+        self.carta_3_jogador_1.configure(bg = 'green', text = 'Carta 3', command= self.carta_3_jogador_1_clicada, bd= 0)
+        self.carta_3_jogador_1.grid(row = 1, column = 5, sticky= "nsew")
 
-            else:
-                c = jogada(2, jogo.mao_2)
-                jogo.recebe_jogada(c)
         #Displays - em canvas
-                self.carta_1_jogador_2 = tk.Button(self.screen)
-                self.carta_1_jogador_2.grid(row = 5, column = 5, sticky= "nsew")
-                self.carta_1_jogador_2.configure(bg = 'green', command= self.carta_1_jogador_2_clicada, bd= 0)
+        self.carta_1_jogador_2 = tk.Button(self.screen)
+        self.carta_1_jogador_2.grid(row = 5, column = 5, sticky= "nsew")
+        self.carta_1_jogador_2.configure(bg = 'green', command= self.carta_1_jogador_2_clicada, bd= 0)
         
-                self.carta_2_jogador_2 = tk.Button(self.screen)
-                self.carta_2_jogador_2.grid(row = 5, column = 7, sticky= "nsew")
-                self.carta_2_jogador_2.configure(bg = 'green', command= self.carta_2_jogador_2_clicada, bd= 0)
+        self.carta_2_jogador_2 = tk.Button(self.screen)
+        self.carta_2_jogador_2.grid(row = 5, column = 7, sticky= "nsew")
+        self.carta_2_jogador_2.configure(bg = 'green', command= self.carta_2_jogador_2_clicada, bd= 0)
         
-                self.carta_3_jogador_2 = tk.Button(self.screen)
-                self.carta_3_jogador_2.grid(row = 5, column = 9, sticky= "nsew")
-                self.carta_3_jogador_2.configure(bg = 'green', command= self.carta_3_jogador_2_clicada, bd= 0)
+        self.carta_3_jogador_2 = tk.Button(self.screen)
+        self.carta_3_jogador_2.grid(row = 5, column = 9, sticky= "nsew")
+        self.carta_3_jogador_2.configure(bg = 'green', command= self.carta_3_jogador_2_clicada, bd= 0)
 
         self.jogador_2 = tk.Label(self.screen)
         self.jogador_2.grid(row= 5, column= 3, sticky= "nsew")
@@ -194,21 +167,6 @@ class Screen:
         versus.configure(text= "X", font= "arial 56 bold", bg= "green")
         versus.grid(row= 3, column= 5, sticky= "nsew")
     
-
-    def desenha_carta(self):
-        self.carta_1_jogador_1.configure(
-            image=self.imagens_carta[self.jogo.mao_1[0]])
-        self.carta_2_jogador_1.configure(
-            image=self.imagens_carta[self.jogo.mao_1[1]])
-        self.carta_3_jogador_1.configure(
-            image=self.imagens_carta[self.jogo.mao_1[2]])
-
-        self.carta_1_jogador_2.configure(
-            image=self.imagens_carta[self.jogo.mao_2[0]])
-        self.carta_2_jogador_2.configure(
-            image=self.imagens_carta[self.jogo.mao_2[1]])
-        self.carta_3_jogador_2.configure(
-            image=self.imagens_carta[self.jogo.mao_2[2]])
 
     #Criando os Callbacks dos botões
 
@@ -241,13 +199,3 @@ class Screen:
 
 app = Screen()
 app.start()
-jogo = Jogo()
-
-while jogo.resultado == 0:
-    if jogo.jogador == 1:
-        c = jogada(1, jogo.mao_1)
-    else:
-        c = jogada(2, jogo.mao_2)
-    jogo.recebe_jogada(c)
-
-print("Jogador {0} venceu!".format(jogo.resultado))
