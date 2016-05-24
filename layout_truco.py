@@ -350,7 +350,6 @@ class Screen:
         self.carta_2_jogador_1 = tk.Button(self.screen)
         self.carta_2_jogador_1.configure(bg = 'green', text = 'Carta 2', command= self.carta_2_jogador_1_clicada, bd= 0)
         self.carta_2_jogador_1.grid(row = 1, column = 3, sticky= "nsew")
->>>>>>> 9f385c94b05c61768c8cbd97cf1acc2cb44d8ea7
         
         self.carta_3_jogador_1 = tk.Button(self.screen)
         self.carta_3_jogador_1.configure(bg = 'green', text = 'Carta 3', command= self.carta_3_jogador_1_clicada, bd= 0)
