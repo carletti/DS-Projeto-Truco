@@ -11,7 +11,112 @@ def compara_cartas(carta1, carta2):
     else:
         return 2
 
+<<<<<<< HEAD
+class Baralho:
+    def __init__(self):
+<<<<<<< HEAD
+        self.screen = tk.Tk()        
+        self.screen.title('Truco')
+        self.screen.geometry('800x640+300+50')
+        self.screen.configure(bg = "darkgreen")
+        
+        #layout
+        self.screen.rowconfigure(0, minsize = 40, weight = 1)
+        self.screen.rowconfigure(1, minsize = 200, weight = 1)
+        self.screen.rowconfigure(2, minsize = 200, weight = 1)
+        self.screen.rowconfigure(3, minsize = 200, weight = 1)
+        self.screen.columnconfigure(0, minsize = 200, weight = 1)
+        self.screen.columnconfigure(1, minsize = 200, weight = 1)
+        self.screen.columnconfigure(2, minsize = 200, weight = 1)
+        self.screen.columnconfigure(3, minsize = 200, weight = 1)
+    
+        #Cards
+        card_1 = tk.Button(self.screen)
+        card_1.configure(text = 'Carta 1')
+        card_1.configure(width = 18, height = 150)
+        card_1.configure(bg = 'white')
+        card_1.grid(row = 3, column = 1)
+        
+        card_2 = tk.Button(self.screen)
+        card_2.configure(text = 'Carta 2')
+        card_2.configure(width = 18, height = 150)
+        card_2.configure(bg = 'white')
+        card_2.grid(row = 3, column = 2)
+        
+        card_3 = tk.Button(self.screen)
+        card_3.configure(text = 'Carta 3')
+        card_3.configure(width = 18, height = 150)
+        card_3.configure(bg = 'white')
+        card_3.grid(row = 3, column = 3)
+        
+        #Botão para pedir TRUCO!
+        truco = tk.Button(self.screen)
+        truco.configure(text = 'TRUCO !')
+        truco.configure(width = 15, height = 5)
+        truco.configure(bg = 'red')
+        truco.grid(row = 3, column = 0)
+        
+        #Displays - em canvas
+        display_1 = tk.Canvas(self.screen)
+        display_1.grid(row = 1, column = 0)
+        display_1.configure(width = 90, height = 150, bg = 'yellow')
+        
+        display_2 = tk.Canvas(self.screen)
+        display_2.grid(row = 1, column = 1)
+        display_2.configure(width = 90, height = 150, bg = 'yellow')
+        
+        display_3 = tk.Canvas(self.screen)
+        display_3.grid(row = 1, column = 2)
+        display_3.configure(width = 90, height = 150, bg = 'yellow')
+        
+        display_4 = tk.Canvas(self.screen)
+        display_4.grid(row = 1, column = 3)
+        display_4.configure(width = 90, height = 150, bg = 'yellow')
+        
+        vira = tk.Canvas(self.screen)
+        vira.grid(row = 2, column = 0)
+        vira.configure(width = 90, height = 150, bg = 'blue')
+        
+        nome_1 = tk.Canvas(self.screen)
+        nome_1.grid(row = 0, column = 0)
+        nome_1.configure(width = 110, height = 30, bg = 'white')
+        
+        
+        nome_2 = tk.Canvas(self.screen)
+        nome_2.grid(row = 0, column = 1)
+        nome_2.configure(width = 110, height = 30, bg = 'white')
+        
+        nome_3= tk.Canvas(self.screen)
+        nome_3.grid(row = 0, column = 2)
+        nome_3.configure(width = 110, height = 30, bg = 'white')
+        
+        nome_4 = tk.Canvas(self.screen)
+        nome_4.grid(row = 0, column = 3)
+        nome_4.configure(width = 110, height = 30, bg = 'white')
+        
+=======
+        self.reinicia()
+        
+    def reinicia(self):
+        self.baralho = list(range(40))
+        
+    def sortear_carta(self):
+        k = random.randint(0, len(self.baralho) - 1)
+        valor_carta = self.baralho[k]
+        del self.baralho[k]
+        return valor_carta
+    
+    def sortear_mao(self):
+        mao = []
+        for i in range(3):
+            valor_carta = self.sortear_carta()
+            carta = valor_to_carta(valor_carta)
+            mao.append(carta)
+        return mao
+            
+=======
 
+>>>>>>> 88869bed0e695742947be672db6feb1c75fe41d3
 def jogada(jogador, mao):
       
     print("Cartas do jogador {0}".format(jogador))
