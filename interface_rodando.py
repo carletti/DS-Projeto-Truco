@@ -121,9 +121,10 @@ class Screen:
             "Rei Paus": self.Rei_Paus 
         }
 
-        #Cartas
+
+        #Cartas (Botões)
         self.carta_1_jogador_1 = tk.Button(self.screen)
-        self.carta_1_jogador_1.configure(text = 'Carta 1', bg = 'green', command= self.carta_1_jogador_1_clicada, bd= 0, image= self.imagens_carta["Ás Copas"])
+        self.carta_1_jogador_1.configure(text = 'Carta 1', bg = 'green', command= self.carta_1_jogador_1_clicada, bd= 0)
         self.carta_1_jogador_1.grid(row = 1, column = 1, sticky= "nsew")
         
         self.carta_2_jogador_1 = tk.Button(self.screen)
@@ -168,6 +169,18 @@ class Screen:
         versus.grid(row= 3, column= 5, sticky= "nsew")
     
 
+    def receber_imagens_jogador_1(self):
+        self.carta_1_jogador_1.configure(image = self.imagens_carta[self.mao_1[0]])
+        self.carta_2_jogador_1.configura(image = self.imagens_carta[self.mao_1[1]])
+        self.carta_3_jogador_1.configura(image = self.imagens_carta[self.mao_1[2]])
+        
+
+    def receber_imagens_jogador_2(self):
+        self.carta_1_jogador_2.configure(image = self.imagens_carta[self.mao_2[0]])
+        self.carta_2_jogador_2.configura(image = self.imagens_carta[self.mao_2[1]])
+        self.carta_3_jogador_2.configura(image = self.imagens_carta[self.mao_2[2]])
+            
+    
     #Criando os Callbacks dos botões
 
     def carta_1_jogador_1_clicada(self):
@@ -196,6 +209,8 @@ class Screen:
 
     def start(self):
         self.screen.mainloop()
+        self.receber_imagem_jogador_1
+        self.receber_imagem_jogador_2
 
 app = Screen()
 app.start()
