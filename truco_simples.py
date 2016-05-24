@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import random
+import tkinter as tk
+#from interface_rodando import Screen
 
 # Definindo cartas
 class Carta:
@@ -143,11 +145,11 @@ class Jogo:
     
 jogo = Jogo()
 
-while jogo.resultado == 0:
-    if jogo.jogador == 1:
-        c = jogada(1, jogo.mao_1)
-    else:
-        c = jogada(2, jogo.mao_2)
-    jogo.recebe_jogada(c)
+#while jogo.resultado == 0:
+#    if jogo.jogador == 1:
+#        c = jogada(1, jogo.mao_1)
+#    else:
+#        c = jogada(2, jogo.mao_2)
+#    jogo.recebe_jogada(c)
 
 print("Jogador {0} venceu!".format(jogo.resultado))
