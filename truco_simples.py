@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
-import tkinter as tk
+
 #from interface_rodando import Screen
 
 # Definindo cartas
