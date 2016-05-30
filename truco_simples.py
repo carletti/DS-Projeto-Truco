@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
-
-#from interface_rodando import Screen
+import interface_rodando as interface
 
 # Definindo cartas
 class Carta:
@@ -76,6 +75,7 @@ def jogada(jogador, mao):
 
 class Jogo:
     def __init__(self):
+        self.screen = interface.Screen()
         self.baralho = Baralho()
  
         self.resultado = 0 
@@ -136,8 +136,10 @@ class Jogo:
         self.baralho.reinicia()
 
         self.mao_1 = self.baralho.sortear_mao()
+        self.screen.receber_imagens_jogador_1()
         self.mao_2 = self.baralho.sortear_mao()
-
+        self.screen.receber_imagens_jogador_2()
+       
         self.pontos_do_round_jogador_1 = 0        
         self.pontos_do_round_jogador_2 = 0
         

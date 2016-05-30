@@ -1,11 +1,11 @@
 import tkinter as tk
-from truco_simples import Jogo
+import truco_simples as ts
 
 class Screen:
     
     def __init__(self):
         
-        self.jogo = Jogo()   
+        self.jogo = ts.Jogo()   
         self.screen = tk.Tk()        
         self.screen.title('Truco')
         self.screen.geometry('650x600+300+50')
@@ -210,8 +210,6 @@ class Screen:
 
     def start(self):
         self.screen.mainloop()
-        self.receber_imagem_jogador_1
-        self.receber_imagem_jogador_2
 
 app = Screen()
 app.start()
