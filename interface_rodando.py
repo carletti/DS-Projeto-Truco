@@ -168,17 +168,18 @@ class Screen:
         versus.configure(text= "X", font= "arial 56 bold", bg= "green")
         versus.grid(row= 3, column= 5, sticky= "nsew")
     
-
+    #Atribuir cartas aos botões
+    
     def receber_imagens_jogador_1(self):
-        self.carta_1_jogador_1.configure(image = self.imagens_carta[self.mao_1[0]])
-        self.carta_2_jogador_1.configura(image = self.imagens_carta[self.mao_1[1]])
-        self.carta_3_jogador_1.configura(image = self.imagens_carta[self.mao_1[2]])
+        self.carta_1_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[0]])
+        self.carta_2_jogador_1.configura(image = self.imagens_carta[self.jogo.mao_1[1]])
+        self.carta_3_jogador_1.configura(image = self.imagens_carta[self.jogo.mao_1[2]])
         
 
     def receber_imagens_jogador_2(self):
-        self.carta_1_jogador_2.configure(image = self.imagens_carta[self.mao_2[0]])
-        self.carta_2_jogador_2.configura(image = self.imagens_carta[self.mao_2[1]])
-        self.carta_3_jogador_2.configura(image = self.imagens_carta[self.mao_2[2]])
+        self.carta_1_jogador_2.configure(image = self.imagens_carta[self.jogo.mao_2[0]])
+        self.carta_2_jogador_2.configura(image = self.imagens_carta[self.jogo.mao_2[1]])
+        self.carta_3_jogador_2.configura(image = self.imagens_carta[self.jogo.mao_2[2]])
             
     
     #Criando os Callbacks dos botões
