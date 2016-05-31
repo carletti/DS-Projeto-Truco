@@ -175,6 +175,10 @@ class Screen:
     #Atribuir cartas aos botões
     
     def receber_imagens_jogador_1(self):
+        self.c1j1 = self.jogo.mao_1[0].carta_str()
+        self.c2j1 = self.jogo.mao_1[1].carta_str()
+        self.c3j1 = self.jogo.mao_1[2].carta_str()
+
         print(self.jogo.mao_1[0])
         print(self.jogo.mao_1[1])
         print(self.jogo.mao_1[2])
@@ -184,6 +188,10 @@ class Screen:
         
 
     def receber_imagens_jogador_2(self):
+        self.c1j2 = self.jogo.mao_2[0].carta_str()
+        self.c2j2 = self.jogo.mao_2[1].carta_str()
+        self.c3j2 = self.jogo.mao_2[2].carta_str()
+        
         print(self.jogo.mao_2[0])
         print(self.jogo.mao_2[1])
         print(self.jogo.mao_2[2])
@@ -197,37 +205,37 @@ class Screen:
         self.carta_1_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(0)
         print(self.jogo.mao_1[0])
-        self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.jogo.mao_1[0].carta_str()])
+        self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c1j1])
 
     def carta_2_jogador_1_clicada(self):
         self.carta_2_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(1)
         print(self.jogo.mao_1[1])
-        self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[1].carta_str()])
+        self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.c2j1])
 
     def carta_3_jogador_1_clicada(self):
         self.carta_3_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
         print(self.jogo.mao_1[2])    
-        self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.jogo.mao_1[2].carta_str()])
+        self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c3j1])
 
     def carta_1_jogador_2_clicada(self):
         self.carta_1_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(0)
         print(self.jogo.mao_2[0])
-        self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.jogo.mao_2[0].carta_str()])
+        self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c1j2])
 
     def carta_2_jogador_2_clicada(self):
         self.carta_2_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")    
         self.jogo.recebe_jogada(1)
         print(self.jogo.mao_2[1])
-        self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.jogo.mao_2[1].carta_str()])
+        self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c2j2])
 
     def carta_3_jogador_2_clicada(self):
         self.carta_3_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
         print(self.jogo.mao_2[2])
-        self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.jogo.mao_2[2].carta_str()])
+        self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c3j2])
         
 #    def reabilita_botão(self):
 #        self.criar_botões()
