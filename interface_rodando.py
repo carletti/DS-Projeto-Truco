@@ -171,17 +171,19 @@ class Screen:
     #Atribuir cartas aos botões
     
     def receber_imagens_jogador_1(self):
-        self.carta_1_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[0]])
-        self.carta_2_jogador_1.configura(image = self.imagens_carta[self.jogo.mao_1[1]])
-        self.carta_3_jogador_1.configura(image = self.imagens_carta[self.jogo.mao_1[2]])
+        print(self.jogo.mao_1[0])
+        print(self.jogo.mao_1[1])
+        print(self.jogo.mao_1[2])
+        self.carta_1_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[0].carta_str()])
+        self.carta_2_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[1].carta_str()])
+        self.carta_3_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[2].carta_str()])
         
 
     def receber_imagens_jogador_2(self):
-        self.carta_1_jogador_2.configure(image = self.imagens_carta[self.jogo.mao_2[0]])
-        self.carta_2_jogador_2.configura(image = self.imagens_carta[self.jogo.mao_2[1]])
-        self.carta_3_jogador_2.configura(image = self.imagens_carta[self.jogo.mao_2[2]])
+        self.carta_1_jogador_2.configure(image = self.imagens_carta[self.jogo.mao_2[0].carta_str()])
+        self.carta_2_jogador_2.configure(image = self.imagens_carta[self.jogo.mao_2[1].carta_str()])
+        self.carta_3_jogador_2.configure(image = self.imagens_carta[self.jogo.mao_2[2].carta_str()])
             
-    
     #Criando os Callbacks dos botões
 
     def carta_1_jogador_1_clicada(self):
@@ -207,9 +209,26 @@ class Screen:
     def carta_3_jogador_2_clicada(self):
         self.carta_3_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
-
+        
+    def reinicia_rodada(self):
+        self.receber_imagens_jogador_1()
+        self.receber_imagens_jogador_2()
+        
     def start(self):
+#        self.receber_imagens_jogador_1()
+#        self.receber_imagens_jogador_2()
+        self.reinicia_rodada()
         self.screen.mainloop()
 
+#ts.Jogo.inicia_round(ts.jogo)
 app = Screen()
-app.start()
+
+while ts.jogo.resultado <= 12:
+#    ts.Jogo.inicia_round()
+    app.start()
+#    if ts.jogo.jogador == 1:
+#        c = ts.jogada(1, ts.jogo.mao_1)
+#    else:
+#        c = ts.jogada(2, ts.jogo.mao_2)
+#    ts.jogo.recebe_jogada(c)
+

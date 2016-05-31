@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
-import interface_rodando as interface
+#import interface_rodando as interface
 
 # Definindo cartas
 class Carta:
@@ -12,7 +12,7 @@ class Carta:
     valor_to_str = ["Quatro", "Cinco", "Seis", "Sete", "Dama",
                     "Valete", "Rei", "Ás", "Dois", "Três"]
     
-    naipe_to_str = ["Ouros", "Espada", "Copas", "Paus"]
+    naipe_to_str = ["Ouros", "Espadas", "Copas", "Paus"]
         
     def __init__(self, valor, naipe):
         self.valor = valor
@@ -26,9 +26,12 @@ class Carta:
         
     def valor_carta(self):
         return 4*self.valor + self.naipe
+
+    def carta_str(self):
+        return self.valor_str() + " " + self.naipe_str()
         
     def __str__(self):
-        return self.valor_str() + " " + self.naipe_str()
+        return self.carta_str()
  
 def valor_to_carta(valor):
     valor_carta = valor // 4
@@ -75,7 +78,7 @@ def jogada(jogador, mao):
 
 class Jogo:
     def __init__(self):
-        self.screen = interface.Screen()
+#        self.screen = interface.Screen()
         self.baralho = Baralho()
  
         self.resultado = 0 
@@ -136,9 +139,9 @@ class Jogo:
         self.baralho.reinicia()
 
         self.mao_1 = self.baralho.sortear_mao()
-        self.screen.receber_imagens_jogador_1()
+#        self.screen.receber_imagens_jogador_1()
         self.mao_2 = self.baralho.sortear_mao()
-        self.screen.receber_imagens_jogador_2()
+#        self.screen.receber_imagens_jogador_2()
        
         self.pontos_do_round_jogador_1 = 0        
         self.pontos_do_round_jogador_2 = 0
