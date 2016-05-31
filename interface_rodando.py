@@ -19,6 +19,9 @@ class Screen:
         self.screen.rowconfigure(4, minsize = 15, weight = 1)
         self.screen.rowconfigure(5, minsize = 200, weight = 1)
         self.screen.rowconfigure(6, minsize = 10, weight = 1)
+        
+        # Criando os botões
+        self.criar_botões()
 
         #Construindo as colunas
         self.screen.columnconfigure(0, minsize = 10, weight = 1)
@@ -123,6 +126,7 @@ class Screen:
 
 
         #Cartas (Botões)
+    def criar_botões(self):
         self.carta_1_jogador_1 = tk.Button(self.screen)
         self.carta_1_jogador_1.configure(text = 'Carta 1', bg = 'green', command= self.carta_1_jogador_1_clicada, bd= 0)
         self.carta_1_jogador_1.grid(row = 1, column = 1, sticky= "nsew")
@@ -189,14 +193,17 @@ class Screen:
     def carta_1_jogador_1_clicada(self):
         self.carta_1_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(0)
+        self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[0].carta_str()])
 
     def carta_2_jogador_1_clicada(self):
         self.carta_2_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(1)
+        self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[1].carta_str()])
 
     def carta_3_jogador_1_clicada(self):
         self.carta_3_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
+        self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[2].carta_str()])
 
     def carta_1_jogador_2_clicada(self):
         self.carta_1_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
@@ -210,25 +217,21 @@ class Screen:
         self.carta_3_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
         
-    def reinicia_rodada(self):
-        self.receber_imagens_jogador_1()
-        self.receber_imagens_jogador_2()
+#    def reabilita_botão
         
-    def start(self):
+#    def reinicia_rodada(self):
+#        while 
 #        self.receber_imagens_jogador_1()
 #        self.receber_imagens_jogador_2()
-        self.reinicia_rodada()
+        
+    def start(self):
+        self.receber_imagens_jogador_1()
+        self.receber_imagens_jogador_2()
+#        self.reinicia_rodada()
         self.screen.mainloop()
 
-#ts.Jogo.inicia_round(ts.jogo)
 app = Screen()
 
-while ts.jogo.resultado <= 12:
-#    ts.Jogo.inicia_round()
+while ts.jogo.pontos_1 <= 12 or ts.jogo.pontos_2 <= 12:
     app.start()
-#    if ts.jogo.jogador == 1:
-#        c = ts.jogada(1, ts.jogo.mao_1)
-#    else:
-#        c = ts.jogada(2, ts.jogo.mao_2)
-#    ts.jogo.recebe_jogada(c)
 
