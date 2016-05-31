@@ -237,22 +237,30 @@ class Screen:
         print(self.jogo.mao_2[2])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c3j2])
         
-#    def reabilita_botão(self):
-#        self.criar_botões()
+    def reabilita_botão(self):
+        self.criar_botões()
         
-#    def reinicia_rodada(self):
-#        while 
-#        self.receber_imagens_jogador_1()
-#        self.receber_imagens_jogador_2()
-        
-    def start(self):
+    def reinicia_rodada(self):
+        self.jogo.inicia_round()        
         self.receber_imagens_jogador_1()
         self.receber_imagens_jogador_2()
-#        self.reinicia_rodada()
-        self.screen.mainloop()
+#        
+    def start(self):
+        # while self.jogo.pontos_1 <= 12 or tself.jogo.pontos_2 <= 12:
+            self.receber_imagens_jogador_1()
+            self.receber_imagens_jogador_2()
+#           self.reinicia_rodada()
+            self.screen.mainloop()
 
 app = Screen()
 
-while ts.jogo.pontos_1 <= 12 or ts.jogo.pontos_2 <= 12:
-    app.start()
+# while ts.jogo.pontos_1 <= 12 or ts.jogo.pontos_2 <= 12:
+app.start()
+while ts.Jogo.resultado == 0:
+    if ts.Jogo.jogador == 1:
+        c = ts.Jogo.jogada(1, ts.Jogo.mao_1)
+    else:
+        c = ts.Jogo.jogada(2, ts.Jogo.mao_2)
+    ts.Jogo.recebe_jogada(c)
 
+print("Jogador {0} venceu!".format(ts.Jogo.resultado))

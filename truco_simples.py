@@ -156,5 +156,5 @@ jogo = Jogo()
 #    else:
 #        c = jogada(2, jogo.mao_2)
 #    jogo.recebe_jogada(c)
-
-print("Jogador {0} venceu!".format(jogo.resultado))
+#
+#print("Jogador {0} venceu!".format(jogo.resultado))
