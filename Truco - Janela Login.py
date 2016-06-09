@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import tkinter as tk
-import pickle
-
-arquivo = open("cadastrados.pickle", "rb")
-cadastrados = pickle.load(arquivo)
+cadastrados = dict()
 
 class janela_login():
     
@@ -14,7 +11,7 @@ class janela_login():
         self.login_cadastro = tk.Tk()
         self.login_cadastro.title("Truco")
         self.login_cadastro.geometry("750x600+200+40")
-        
+        self.login_cadastro.configure(background = "green")
         #Definindo Layout da Janela
         
         #Linhas
@@ -37,16 +34,14 @@ class janela_login():
         self.login_cadastro.columnconfigure(0, minsize= 100, weight=1)
         self.login_cadastro.columnconfigure(1, minsize= 400, weight=1)
         self.login_cadastro.columnconfigure(2, minsize= 100, weight=1)
-        
-        self.login_cadastro.configure(background = "green")
 
         self.truco_label= tk.Label(self.login_cadastro)
         self.truco_label.configure(text= "TRUCO", fg= "white", font= "arial 60 bold", bg= "green")
-        self.truco_label.grid(row= 1, column=1, sticky="nsew")
+        self.truco_label.grid(row= 0, column=1, sticky="nsew")
 
         self.naipes_inicio = tk.PhotoImage(file= "naipes inicial.png")
         self.label_naipes_inicio = tk.Label(self.login_cadastro, image= self.naipes_inicio, height= 0, width= 0, bg= "green")
-        self.label_naipes_inicio.grid(row= 0, column= 0, sticky="nsew")
+        self.label_naipes_inicio.grid(row= 1, column= 1, sticky="nsew")
         
         #Criando espaço para colocar os dados de login
 
@@ -112,13 +107,13 @@ class janela_login():
         nome = self.nome_login.get()
         senha = self.senha_login.get()
         if nome not in cadastrados:
-            tk.messagebox.showinfo("Login", "Usuário não encontrado")
+            tk.messagebox.OK("Usu")
         if nome in cadastrados:
             senha_correta = cadastrados[nome]
             if senha == senha_correta:
                 print ("Acesso liberado")
             else:
-                tk.messagebox.showinfo("Login", "Senha Incorreta")
+                tk.tkMessageBox.showinfo("Senha Incorreta")
         self.nome_login.delete(0, 'end')
         self.senha_login.delete(0,'end')
 
@@ -135,46 +130,3 @@ class janela_login():
 
 janela= janela_login()
 janela.inicio()
-arquivo.close()
-
-#meufirebase.onchange
-
-'''##PRIMEIRA PAGINA
-
-
-import pickle
-
-arquivo = open("teste.pickle", "wb")
-
-
-
-meus_dados = {
-    'leo': [
-        '011197', 
-        'leo@gmail.com', 
-        ['casa', 'livro'], 
-        {'casa': ['9999', 'ap'], 
-         'livro': ['10', 'caderno']}
-    ]
-}
-
-
-pickle.dump(meus_dados, arquivo)
-
-
-arquivo.close()
-
-
-#SEGUNDA PAGINA
-
-
-import pickle
-
-arquivo = open("teste.pickle", "rb")
-
-
-dados = pickle.load(arquivo)
-print(dados)
-
-arquivo.close()
-'''

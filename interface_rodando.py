@@ -38,6 +38,7 @@ class Screen:
 
         #Adicionando as imagens das cartas
 
+        self.Fundo_Baralho=tk.PhotoImage(file= "Fundo_Baralho.png")        
         self.As_Ouros=tk.PhotoImage(file= "A_pica.png")
         self.As_Espadas=tk.PhotoImage(file= "A_espadas.png")
         self.As_Copas=tk.PhotoImage(file= "A_copas.png")
@@ -251,6 +252,16 @@ class Screen:
             self.receber_imagens_jogador_2()
 #           self.reinicia_rodada()
             self.screen.mainloop()
+            
+    def esconde_cartas(self):
+        if self.jogo.jogador == 1:
+            self.carta_1_jogador_2.configure(image = self.Fundo_Baralho)
+            self.carta_2_jogador_2.configure(image = self.Fundo_Baralho)
+            self.carta_3_jogador_2.configure(image = self.Fundo_Baralho)
+        elif self.jogo.jogador == 2:
+            self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
+            self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
+            self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
 
 app = Screen()
 
