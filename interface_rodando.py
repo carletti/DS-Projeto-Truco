@@ -4,7 +4,6 @@ import truco_simples as ts
 class Screen:
     
     def __init__(self):
-        
         self.jogo = ts.Jogo()   
         self.screen = tk.Tk()        
         self.screen.title('Truco')
@@ -37,8 +36,11 @@ class Screen:
         self.screen.columnconfigure(10, minsize = 10, weight = 1)
 
         #Adicionando as imagens das cartas
+<<<<<<< HEAD
 
         self.Fundo_Baralho=tk.PhotoImage(file= "Fundo_Baralho.png")        
+=======
+>>>>>>> origin/master
         self.As_Ouros=tk.PhotoImage(file= "A_pica.png")
         self.As_Espadas=tk.PhotoImage(file= "A_espadas.png")
         self.As_Copas=tk.PhotoImage(file= "A_copas.png")
@@ -81,7 +83,7 @@ class Screen:
         self.Rei_Copas=tk.PhotoImage(file= "K_copa.png")
         self.Rei_Paus=tk.PhotoImage(file= "K_zap.png")
 
-
+        # Dicionário com as strings das cartas como chave que irào retornar o valor "imagem das cartas"
         self.imagens_carta = {
             "Ás Ouros": self.As_Ouros ,
             "Ás Espadas": self.As_Espadas ,
@@ -126,7 +128,7 @@ class Screen:
         }
 
 
-        #Cartas (Botões)
+    #Cartas (Botões)
     def criar_botões(self):
         self.carta_1_jogador_1 = tk.Button(self.screen)
         self.carta_1_jogador_1.configure(text = 'Carta 1', bg = 'green', command= self.carta_1_jogador_1_clicada, bd= 0)
@@ -140,7 +142,6 @@ class Screen:
         self.carta_3_jogador_1.configure(bg = 'green', text = 'Carta 3', command= self.carta_3_jogador_1_clicada, bd= 0)
         self.carta_3_jogador_1.grid(row = 1, column = 5, sticky= "nsew")
 
-        #Displays - em canvas
         self.carta_1_jogador_2 = tk.Button(self.screen)
         self.carta_1_jogador_2.grid(row = 5, column = 5, sticky= "nsew")
         self.carta_1_jogador_2.configure(bg = 'green', command= self.carta_1_jogador_2_clicada, bd= 0)
@@ -153,6 +154,7 @@ class Screen:
         self.carta_3_jogador_2.grid(row = 5, column = 9, sticky= "nsew")
         self.carta_3_jogador_2.configure(bg = 'green', command= self.carta_3_jogador_2_clicada, bd= 0)
 
+        # Label onde o nome dos jogadores irá aparecer
         self.jogador_2 = tk.Label(self.screen)
         self.jogador_2.grid(row= 5, column= 3, sticky= "nsew")
         self.jogador_2.configure(bg= "green", text= "Jogador 2", font= "arial 15 bold")
@@ -161,6 +163,7 @@ class Screen:
         self.jogador_1.grid(row= 1, column= 7, sticky= "nsew")
         self.jogador_1.configure(bg= "green", text= "Jogador 1", font= "arial 15 bold")
 
+        # Label onde as cartas irão aparecer
         self.carta_jogada_jogador_1 = tk.Label()
         self.carta_jogada_jogador_1.configure(bg= "green")
         self.carta_jogada_jogador_1.grid(row= 3, column= 3, sticky= "nsew")
@@ -174,12 +177,12 @@ class Screen:
         versus.grid(row= 3, column= 5, sticky= "nsew")
         
     #Atribuir cartas aos botões
-    
     def receber_imagens_jogador_1(self):
+        # Imagens salvas para aparecer na label
         self.c1j1 = self.jogo.mao_1[0].carta_str()
         self.c2j1 = self.jogo.mao_1[1].carta_str()
         self.c3j1 = self.jogo.mao_1[2].carta_str()
-
+        # Print de teste
         print(self.jogo.mao_1[0])
         print(self.jogo.mao_1[1])
         print(self.jogo.mao_1[2])
