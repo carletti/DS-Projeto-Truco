@@ -80,11 +80,8 @@ class Jogo:
     def __init__(self):
 #        self.screen = interface.Screen()
         self.baralho = Baralho()
- 
         self.resultado = 0 
- 
         self.jogador = 1
-        
         self.pontos_1 = 0
         self.pontos_2 = 0
         self.inicia_round()
@@ -98,7 +95,6 @@ class Jogo:
             self.mesa_2 = self.mao_2[indice_carta_na_mao]
             self.mao_2[indice_carta_na_mao] = None
             self.jogador = 1
-            
         self.cartas_jogadas += 1
         
         if self.cartas_jogadas == 2:
@@ -137,12 +133,8 @@ class Jogo:
  
     def inicia_round(self):
         self.baralho.reinicia()
-
         self.mao_1 = self.baralho.sortear_mao()
-#        self.screen.receber_imagens_jogador_1()
         self.mao_2 = self.baralho.sortear_mao()
-#        self.screen.receber_imagens_jogador_2()
-       
         self.pontos_do_round_jogador_1 = 0        
         self.pontos_do_round_jogador_2 = 0
         
@@ -150,11 +142,3 @@ class Jogo:
     
 jogo = Jogo()
 
-#while jogo.resultado == 0:
-#    if jogo.jogador == 1:
-#        c = jogada(1, jogo.mao_1)
-#    else:
-#        c = jogada(2, jogo.mao_2)
-#    jogo.recebe_jogada(c)
-#
-#print("Jogador {0} venceu!".format(jogo.resultado))

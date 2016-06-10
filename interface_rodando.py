@@ -36,11 +36,9 @@ class Screen:
         self.screen.columnconfigure(10, minsize = 10, weight = 1)
 
         #Adicionando as imagens das cartas
-<<<<<<< HEAD
 
         self.Fundo_Baralho=tk.PhotoImage(file= "Fundo_Baralho.png")        
-=======
->>>>>>> origin/master
+
         self.As_Ouros=tk.PhotoImage(file= "A_pica.png")
         self.As_Espadas=tk.PhotoImage(file= "A_espadas.png")
         self.As_Copas=tk.PhotoImage(file= "A_copas.png")
@@ -208,36 +206,48 @@ class Screen:
     def carta_1_jogador_1_clicada(self):
         self.carta_1_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(0)
+        self.esconde_cartas_1()
+        self.mostra_cartas_2()
         print(self.jogo.mao_1[0])
         self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c1j1])
 
     def carta_2_jogador_1_clicada(self):
         self.carta_2_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(1)
+        self.esconde_cartas_1() 
+        self.mostra_cartas_2()
         print(self.jogo.mao_1[1])
         self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.c2j1])
 
     def carta_3_jogador_1_clicada(self):
         self.carta_3_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
+        self.esconde_cartas_1()  
+        self.mostra_cartas_2()
         print(self.jogo.mao_1[2])    
         self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c3j1])
 
     def carta_1_jogador_2_clicada(self):
         self.carta_1_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(0)
+        self.esconde_cartas_2()
+        self.mostra_cartas_1()
         print(self.jogo.mao_2[0])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c1j2])
 
     def carta_2_jogador_2_clicada(self):
         self.carta_2_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")    
         self.jogo.recebe_jogada(1)
+        self.esconde_cartas_2()
+        self.mostra_cartas_1()
         print(self.jogo.mao_2[1])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c2j2])
 
     def carta_3_jogador_2_clicada(self):
         self.carta_3_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
+        self.esconde_cartas_2()
+        self.mostra_cartas_1()
         print(self.jogo.mao_2[2])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c3j2])
         
@@ -248,31 +258,39 @@ class Screen:
         self.jogo.inicia_round()        
         self.receber_imagens_jogador_1()
         self.receber_imagens_jogador_2()
-#        
+        
     def start(self):
-        # while self.jogo.pontos_1 <= 12 or tself.jogo.pontos_2 <= 12:
-            self.receber_imagens_jogador_1()
-            self.receber_imagens_jogador_2()
-#           self.reinicia_rodada()
-            self.screen.mainloop()
+        self.receber_imagens_jogador_1()
+        self.receber_imagens_jogador_2()
+        self.screen.mainloop()
             
-    def esconde_cartas(self):
-        if self.jogo.jogador == 1:
-            self.carta_1_jogador_2.configure(image = self.Fundo_Baralho)
-            self.carta_2_jogador_2.configure(image = self.Fundo_Baralho)
-            self.carta_3_jogador_2.configure(image = self.Fundo_Baralho)
-        elif self.jogo.jogador == 2:
-            self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
-            self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
-            self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
+    def esconde_cartas_2(self):
+        self.carta_1_jogador_2.configure(image = self.Fundo_Baralho)
+        self.carta_2_jogador_2.configure(image = self.Fundo_Baralho)
+        self.carta_3_jogador_2.configure(image = self.Fundo_Baralho)
+
+    def esconde_cartas_1(self):
+        self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
+        self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
+        self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
+
+    def mostra_cartas_1(self):
+        self.carta_1_jogador_1.configure(image = self.imagens_carta[self.c1j1])
+        self.carta_2_jogador_1.configure(image = self.imagens_carta[self.c2j1])
+        self.carta_3_jogador_1.configure(image = self.imagens_carta[self.c3j1])
+
+    def mostra_cartas_2(self):
+        self.carta_1_jogador_2.configure(image = self.imagens_carta[self.c1j2])
+        self.carta_2_jogador_2.configure(image = self.imagens_carta[self.c2j2])
+        self.carta_3_jogador_2.configure(image = self.imagens_carta[self.c3j2])
 
 app = Screen()
 
 # while ts.jogo.pontos_1 <= 12 or ts.jogo.pontos_2 <= 12:
 app.start()
-while ts.Jogo.resultado == 0:
-    if ts.Jogo.jogador == 1:
-        c = ts.Jogo.jogada(1, ts.Jogo.mao_1)
+while ts.jogo.resultado == 0:
+    if ts.jogo.jogador == 1:
+        c = ts.jogo.jogada(1, ts.Jogo.mao_1)
     else:
         c = ts.Jogo.jogada(2, ts.Jogo.mao_2)
     ts.Jogo.recebe_jogada(c)
