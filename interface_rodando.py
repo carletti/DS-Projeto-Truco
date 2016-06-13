@@ -269,7 +269,7 @@ class Screen:
             self.carta_1_jogador_2.configure(image = self.Fundo_Baralho)
             self.carta_2_jogador_2.configure(image = self.Fundo_Baralho)
             self.carta_3_jogador_2.configure(image = self.Fundo_Baralho)
-        elif ts.jogo.jogador == 2
+        elif ts.jogo.jogador == 2:
             self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
             self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
             self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
