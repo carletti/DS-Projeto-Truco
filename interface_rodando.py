@@ -174,6 +174,15 @@ class Screen:
         versus.configure(text= "X", font= "arial 56 bold", bg= "green")
         versus.grid(row= 3, column= 5, sticky= "nsew")
         
+        self.resultado1= tk.Label()
+        self.resultado1.configure(bg="light green")
+        self.resultado1.grid(row= 3, column= 1, sticky="nsew")
+        
+        self.resultado2= tk.Label()
+        self.resultado2.configure(bg="light green")
+        self.resultado2.grid(row= 3, column= 9, sticky="nsew")
+
+        
     #Atribuir cartas aos botões
     def receber_imagens_jogador_1(self):
         # Imagens salvas para aparecer na label
@@ -207,7 +216,7 @@ class Screen:
         self.carta_1_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(0)
         self.esconde_cartas_1()
-        self.mostra_cartas_2()
+#        self.mostra_cartas()
         print(self.jogo.mao_1[0])
         self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c1j1])
 
@@ -215,7 +224,7 @@ class Screen:
         self.carta_2_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(1)
         self.esconde_cartas_1() 
-        self.mostra_cartas_2()
+ #       self.mostra_cartas()
         print(self.jogo.mao_1[1])
         self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.c2j1])
 
@@ -223,7 +232,7 @@ class Screen:
         self.carta_3_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
         self.esconde_cartas_1()  
-        self.mostra_cartas_2()
+  #      self.mostra_cartas()
         print(self.jogo.mao_1[2])    
         self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c3j1])
 
@@ -231,23 +240,23 @@ class Screen:
         self.carta_1_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(0)
         self.esconde_cartas_2()
-        self.mostra_cartas_1()
+   #     self.mostra_cartas()
         print(self.jogo.mao_2[0])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c1j2])
 
     def carta_2_jogador_2_clicada(self):
         self.carta_2_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")    
         self.jogo.recebe_jogada(1)
-        self.esconde_cartas()
-        self.mostra_cartas_1()
+        self.esconde_cartas_2()
+    #    self.mostra_cartas()
         print(self.jogo.mao_2[1])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c2j2])
 
     def carta_3_jogador_2_clicada(self):
         self.carta_3_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
-        self.esconde_cartas()
-        self.mostra_cartas_1()
+        self.esconde_cartas_2()
+     #   self.mostra_cartas()
         print(self.jogo.mao_2[2])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c3j2])
         
@@ -262,32 +271,38 @@ class Screen:
     def start(self):
         self.receber_imagens_jogador_1()
         self.receber_imagens_jogador_2()
+        self.apresenta_resultado()
         self.screen.mainloop()
             
-    def esconde_cartas(self):
-        if ts.jogo.jogador == 1:
+    def esconde_cartas_2(self):
+#        if ts.jogo.jogador == 1:
             self.carta_1_jogador_2.configure(image = self.Fundo_Baralho)
             self.carta_2_jogador_2.configure(image = self.Fundo_Baralho)
             self.carta_3_jogador_2.configure(image = self.Fundo_Baralho)
-        elif ts.jogo.jogador == 2:
-            self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
-            self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
-            self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
+#        elif ts.jogo.jogador == 2:
+  #          self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
+   #         self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
+#            self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
 
-  #  def esconde_cartas_1(self):
-   #     self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
-    #    self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
-     #   self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
+    def esconde_cartas_1(self):
+        self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
+        self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
+        self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
+    
+    def apresenta_resultado(self):
+        self.resultado1.configure(text= ts.jogo.resultado_da_mao)
+        self.resultado2.configure(text= ts.jogo.resultado_da_mao)
 
-    def mostra_cartas_1(self):
-        self.carta_1_jogador_1.configure(image = self.imagens_carta[self.c1j1])
-        self.carta_2_jogador_1.configure(image = self.imagens_carta[self.c2j1])
-        self.carta_3_jogador_1.configure(image = self.imagens_carta[self.c3j1])
-
-    def mostra_cartas_2(self):
-        self.carta_1_jogador_2.configure(image = self.imagens_carta[self.c1j2])
-        self.carta_2_jogador_2.configure(image = self.imagens_carta[self.c2j2])
-        self.carta_3_jogador_2.configure(image = self.imagens_carta[self.c3j2])
+#    def mostra_cartas(self):
+ #       if ts.jogo.jogador == 1:
+  #          self.carta_1_jogador_1.configure(image = self.imagens_carta[self.c1j1])
+   #         self.carta_2_jogador_1.configure(image = self.imagens_carta[self.c2j1])
+    #        self.carta_3_jogador_1.configure(image = self.imagens_carta[self.c3j1])
+     #   elif ts.jogo.jogador == 2:
+#    def mostra_cartas_2(self):
+#            self.carta_1_jogador_2.configure(image = self.imagens_carta[self.c1j2])
+ #           self.carta_2_jogador_2.configure(image = self.imagens_carta[self.c2j2])
+  #          self.carta_3_jogador_2.configure(image = self.imagens_carta[self.c3j2])
 
 app = Screen()
 

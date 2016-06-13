@@ -85,6 +85,7 @@ class Jogo:
         self.pontos_1 = 0
         self.pontos_2 = 0
         self.inicia_round()
+        self.resultado_da_mao = None
 
     def recebe_jogada(self, indice_carta_na_mao):
         if self.jogador == 1:
@@ -101,11 +102,13 @@ class Jogo:
             # Verifica quem ganhou esta mao.
             if compara_cartas(self.mesa_1, self.mesa_2) == 1:
                 print("jogador 1 venceu esta mao")
+                self.resultado_da_mao = "Jogador 1 venceu esta mão"
                 self.pontos_do_round_jogador_1 += 1
                 self.jogador = 1
             else:
                 print("jogador 2 venceu esta mao")
                 self.pontos_do_round_jogador_2 += 1
+                self.resultado_da_mao = "Jogador 2 venceu esta mão"
                 self.jogador = 2
                 
             self.inicia_mao()
