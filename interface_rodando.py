@@ -238,7 +238,7 @@ class Screen:
     def carta_2_jogador_2_clicada(self):
         self.carta_2_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")    
         self.jogo.recebe_jogada(1)
-        self.esconde_cartas_2()
+        self.esconde_cartas()
         self.mostra_cartas_1()
         print(self.jogo.mao_2[1])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c2j2])
@@ -246,7 +246,7 @@ class Screen:
     def carta_3_jogador_2_clicada(self):
         self.carta_3_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
         self.jogo.recebe_jogada(2)
-        self.esconde_cartas_2()
+        self.esconde_cartas()
         self.mostra_cartas_1()
         print(self.jogo.mao_2[2])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c3j2])
@@ -264,15 +264,20 @@ class Screen:
         self.receber_imagens_jogador_2()
         self.screen.mainloop()
             
-    def esconde_cartas_2(self):
-        self.carta_1_jogador_2.configure(image = self.Fundo_Baralho)
-        self.carta_2_jogador_2.configure(image = self.Fundo_Baralho)
-        self.carta_3_jogador_2.configure(image = self.Fundo_Baralho)
+    def esconde_cartas(self):
+        if ts.jogo.jogador == 1:
+            self.carta_1_jogador_2.configure(image = self.Fundo_Baralho)
+            self.carta_2_jogador_2.configure(image = self.Fundo_Baralho)
+            self.carta_3_jogador_2.configure(image = self.Fundo_Baralho)
+        elif ts.jogo.jogador == 2
+            self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
+            self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
+            self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
 
-    def esconde_cartas_1(self):
-        self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
-        self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
-        self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
+  #  def esconde_cartas_1(self):
+   #     self.carta_1_jogador_1.configure(image = self.Fundo_Baralho)
+    #    self.carta_2_jogador_1.configure(image = self.Fundo_Baralho)
+     #   self.carta_3_jogador_1.configure(image = self.Fundo_Baralho)
 
     def mostra_cartas_1(self):
         self.carta_1_jogador_1.configure(image = self.imagens_carta[self.c1j1])
