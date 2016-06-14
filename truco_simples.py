@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import random
-#import interface_rodando as interface
 
 # Definindo cartas
 class Carta:
@@ -68,41 +67,40 @@ class Baralho:
             mao.append(carta)
         return mao
             
-def jogada(jogador, mao):
-    print("Cartas do jogador {0}".format(jogador))
-    for carta in mao:
-        print(carta, end=" ; ")
-    print()
-    c = int(input("Escolha sua carta: "))
-    return c
+    def jogada(jogador, mao):
+        print("Cartas do jogador {0}".format(jogador))
+        for carta in mao:
+            print(carta, end=" ; ")
+            print()
+            c = int(input("Escolha sua carta: "))
+        return c
 
 class Jogo:
     def __init__(self):
-#        self.screen = interface.Screen()
         self.baralho = Baralho()
         self.resultado = 0 
         self.jogador = 1
         self.pontos_1 = 0
         self.pontos_2 = 0
         self.inicia_round()
-        self.resultado_da_mao = None
+        self.resultado_da_mao = ""
 
     def recebe_jogada(self, indice_carta_na_mao):
         if self.jogador == 1:
             self.mesa_1 = self.mao_1[indice_carta_na_mao]
-            self.mao_1[indice_carta_na_mao] = None
             self.jogador = 2
         else:
             self.mesa_2 = self.mao_2[indice_carta_na_mao]
-            self.mao_2[indice_carta_na_mao] = None
             self.jogador = 1
         self.cartas_jogadas += 1
         
         if self.cartas_jogadas == 2:
             # Verifica quem ganhou esta mao.
             if compara_cartas(self.mesa_1, self.mesa_2) == 1:
-                print("jogador 1 venceu esta mao")
                 self.resultado_da_mao = "Jogador 1 venceu esta mão"
+                #print("jogador 1 venceu esta mao")
+                #self.resultado_da_mao = "Jogador 1 venceu esta mão"
+                print(self.resultado_da_mao)
                 self.pontos_do_round_jogador_1 += 1
                 self.jogador = 1
             else:
