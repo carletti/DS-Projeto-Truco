@@ -7,7 +7,7 @@ class Screen:
         self.jogo = ts.Jogo()   
         self.screen = tk.Tk()        
         self.screen.title('Truco')
-        self.screen.geometry('650x600+300+50')
+        self.screen.geometry('750x700+300+50')
         self.screen.configure(bg = "green")
         
         #Construindo as Linhas
@@ -175,11 +175,11 @@ class Screen:
         versus.grid(row= 3, column= 5, sticky= "nsew")
         
         self.resultado1= tk.Label()
-        self.resultado1.configure(bg="light green", text= ts.jogo.pontos_1)
+        self.resultado1.configure(bg="green", text= self.jogo.pontos_do_round_jogador_1, font= "arial 32 bold")
         self.resultado1.grid(row= 3, column= 1, sticky="nsew")
         
         self.resultado2= tk.Label()
-        self.resultado2.configure(bg="light green", text= ts.jogo.pontos_2)
+        self.resultado2.configure(bg="green", text= self.jogo.pontos_do_round_jogador_2, font= "arial 32 bold")
         self.resultado2.grid(row= 3, column= 9, sticky="nsew")
 
         
@@ -216,62 +216,64 @@ class Screen:
 
     def carta_1_jogador_1_clicada(self):
         self.carta_1_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
-        self.jogo.recebe_jogada(0)
-        self.receber_imagens_jogador_2()
         print(self.jogo.mao_1[0])
         self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c1j1])
-
+        self.jogo.recebe_jogada(0)
+        self.apresenta_resultado()
+        
     def carta_2_jogador_1_clicada(self):
         self.carta_2_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
-        self.jogo.recebe_jogada(1)
-        self.receber_imagens_jogador_2()
         print(self.jogo.mao_1[1])
         self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.c2j1])
-
+        self.jogo.recebe_jogada(1)
+        self.apresenta_resultado()
+        
     def carta_3_jogador_1_clicada(self):
         self.carta_3_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
-        self.jogo.recebe_jogada(2)
-        self.receber_imagens_jogador_2()
         print(self.jogo.mao_1[2])
         self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c3j1])
+        self.jogo.recebe_jogada(2)
+        self.apresenta_resultado()
 
     def carta_1_jogador_2_clicada(self):
         self.carta_1_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
-        self.jogo.recebe_jogada(0)
-        self.receber_imagens_jogador_1()
         print(self.jogo.mao_2[0])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c1j2])
+        self.jogo.recebe_jogada(0)
+        self.apresenta_resultado()
 
     def carta_2_jogador_2_clicada(self):
         self.carta_2_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "") 
-        self.jogo.recebe_jogada(1)
-        self.receber_imagens_jogador_1()       
         print(self.jogo.mao_2[1])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c2j2])
-
+        self.jogo.recebe_jogada(1)                
+        self.apresenta_resultado()        
+        
     def carta_3_jogador_2_clicada(self):
         self.carta_3_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
-        self.jogo.recebe_jogada(2)
-        self.receber_imagens_jogador_1()
         print(self.jogo.mao_2[2])
-        self.apresenta_resultado()
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c3j2])
-        
-    def reinicia_rodada(self):
-        if ts.jogo.pontos_do_round_jogador_1 == 2 or ts.jogo.pontos_do_round_jogador_2 == 2:
+        self.jogo.recebe_jogada(2)
+        self.apresenta_resultado()
+
+    def reinicia_round(self):
+        if ts.jogo.pontos_do_round_jogador_1 >= 2 or ts.jogo.pontos_do_round_jogador_2 >= 2:
             self.jogo.inicia_round()        
+            self.criar_botões()
+            self.receber_imagens_jogador_1()
+            self.receber_imagens_jogador_2()
             self.start()
         
     def start(self):
-        self.reinicia_rodada()        
+        self.reinicia_round()        
         self.receber_imagens_jogador_1()
         self.receber_imagens_jogador_2()
         self.screen.mainloop()
             
     def apresenta_resultado(self):
-        self.resultado1.configure(text= ts.jogo.resultado_da_mao)
-        self.resultado2.configure(text= ts.jogo.resultado_da_mao)
-        
+        self.resultado1.configure(text= self.jogo.pontos_do_round_jogador_1)
+        self.resultado2.configure(text= self.jogo.pontos_do_round_jogador_2)
+
 app = Screen()
 
 app.start()
