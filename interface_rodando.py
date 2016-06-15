@@ -38,6 +38,8 @@ class Screen:
 
         #Adicionando as imagens das cartas
 
+        self.instrutor_imagem=tk.PhotoImage(file= "boneco.png")
+        self.aprendiz_imagem=tk.PhotoImage(file= "boneco-confuso.png")
         self.Fundo_Baralho=tk.PhotoImage(file= "Fundo_Baralho.png")        
 
         self.As_Ouros=tk.PhotoImage(file= "A_pica.png")
@@ -126,7 +128,15 @@ class Screen:
             "Rei Paus": self.Rei_Paus 
         }
 
+        self.avatar_aprendiz= tk.Label()
+        self.avatar_aprendiz.grid(row = 5, column = 1, sticky= "nsew")
+        self.avatar_aprendiz.configure(bg = "green", image= self.aprendiz_imagem)
+    
+        self.avatar_instrutor= tk.Label()
+        self.avatar_instrutor.grid(row = 1, column = 9, sticky= "nsew")
+        self.avatar_instrutor.configure(bg = "green", image= self.instrutor_imagem)
 
+    
     #Cartas (Botões)
     def criar_botões(self):
         self.carta_1_jogador_1 = tk.Button(self.screen)
