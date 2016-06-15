@@ -98,13 +98,9 @@ class Jogo:
             # Verifica quem ganhou esta mao.
             if compara_cartas(self.mesa_1, self.mesa_2) == 1:
                 self.resultado_da_mao = "Jogador 1 venceu esta mão"
-                #print("jogador 1 venceu esta mao")
-                #self.resultado_da_mao = "Jogador 1 venceu esta mão"
-                print(self.resultado_da_mao)
                 self.pontos_do_round_jogador_1 += 1
                 self.jogador = 1
             else:
-                print("jogador 2 venceu esta mao")
                 self.pontos_do_round_jogador_2 += 1
                 self.resultado_da_mao = "Jogador 2 venceu esta mão"
                 self.jogador = 2
@@ -115,14 +111,11 @@ class Jogo:
             if self.pontos_do_round_jogador_1 >= 2 or \
                self.pontos_do_round_jogador_2 >= 2:
                 if self.pontos_do_round_jogador_1 > self.pontos_do_round_jogador_2:
-                    print("Jogador 1 ganhou o round")
                     self.pontos_1 += 1
                     self.jogador = 1
                 else:
-                    print("Jogador 2 ganhou o round")
                     self.pontos_2 += 1
                     self.jogador = 2
-#                self.inicia_round()
                 
                 if self.pontos_1 == 12:
                     self.resultado = 1

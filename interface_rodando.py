@@ -156,11 +156,12 @@ class Screen:
         # Label onde o nome dos jogadores irá aparecer
         self.jogador_2 = tk.Label(self.screen)
         self.jogador_2.grid(row= 5, column= 3, sticky= "nsew")
-        self.jogador_2.configure(bg= "green", text= "Jogador 2", font= "arial 15 bold")
+        self.jogador_2.configure(bg= "green", text= "Aprendiz", font= "arial 15 bold")
+        
 
         self.jogador_1 = tk.Label(self.screen)
         self.jogador_1.grid(row= 1, column= 7, sticky= "nsew")
-        self.jogador_1.configure(bg= "green", text= "Jogador 1", font= "arial 15 bold")
+        self.jogador_1.configure(bg= "green", text= "Instrutor", font= "arial 15 bold")
 
         # Label onde as cartas irão aparecer
         self.carta_jogada_jogador_1 = tk.Label()
@@ -175,6 +176,7 @@ class Screen:
         versus.configure(text= "X", font= "arial 56 bold", bg= "green")
         versus.grid(row= 3, column= 5, sticky= "nsew")
         
+        # Label com os pontos do round dos jogadores
         self.resultado1= tk.Label()
         self.resultado1.configure(bg="green", text= self.jogo.pontos_do_round_jogador_1, font= "arial 32 bold")
         self.resultado1.grid(row= 3, column= 1, sticky="nsew")
@@ -190,90 +192,67 @@ class Screen:
         self.c1j1 = self.jogo.mao_1[0].carta_str()
         self.c2j1 = self.jogo.mao_1[1].carta_str()
         self.c3j1 = self.jogo.mao_1[2].carta_str()
-        # Print de teste
-        print(self.jogo.mao_1[0])
-        print(self.jogo.mao_1[1])
-        print(self.jogo.mao_1[2])
-        
         self.carta_1_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[0].carta_str()])
         self.carta_2_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[1].carta_str()])
         self.carta_3_jogador_1.configure(image = self.imagens_carta[self.jogo.mao_1[2].carta_str()])
         
-
+    # Recebe as imagens e coloca nos botões
     def receber_imagens_jogador_2(self):
         self.c1j2 = self.jogo.mao_2[0].carta_str()
         self.c2j2 = self.jogo.mao_2[1].carta_str()
         self.c3j2 = self.jogo.mao_2[2].carta_str()
-        
-        print(self.jogo.mao_2[0])
-        print(self.jogo.mao_2[1])
-        print(self.jogo.mao_2[2])
-        
         self.carta_1_jogador_2.configure(image = self.imagens_carta[self.jogo.mao_2[0].carta_str()])
         self.carta_2_jogador_2.configure(image = self.imagens_carta[self.jogo.mao_2[1].carta_str()])
         self.carta_3_jogador_2.configure(image = self.imagens_carta[self.jogo.mao_2[2].carta_str()])
             
     #Criando os Callbacks dos botões
-
     def carta_1_jogador_1_clicada(self):
         self.carta_1_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
-        print(self.jogo.mao_1[0])
         self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c1j1])
         self.jogo.recebe_jogada(0)
         self.apresenta_resultado()
         
     def carta_2_jogador_1_clicada(self):
         self.carta_2_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
-        print(self.jogo.mao_1[1])
         self.carta_jogada_jogador_1.configure(image = self.imagens_carta[self.c2j1])
         self.jogo.recebe_jogada(1)
         self.apresenta_resultado()
         
     def carta_3_jogador_1_clicada(self):
         self.carta_3_jogador_1.configure(bg="green", state= "disabled", bd= 0, text= "")
-        print(self.jogo.mao_1[2])
         self.carta_jogada_jogador_1.configure(image= self.imagens_carta[self.c3j1])
         self.jogo.recebe_jogada(2)
         self.apresenta_resultado()
 
     def carta_1_jogador_2_clicada(self):
         self.carta_1_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
-        print(self.jogo.mao_2[0])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c1j2])
         self.jogo.recebe_jogada(0)
         self.apresenta_resultado()
 
     def carta_2_jogador_2_clicada(self):
         self.carta_2_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "") 
-        print(self.jogo.mao_2[1])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c2j2])
         self.jogo.recebe_jogada(1)                
         self.apresenta_resultado()        
         
     def carta_3_jogador_2_clicada(self):
         self.carta_3_jogador_2.configure(bg="green", state= "disabled", bd= 0, text= "")
-        print(self.jogo.mao_2[2])
         self.carta_jogada_jogador_2.configure(image= self.imagens_carta[self.c3j2])
         self.jogo.recebe_jogada(2)
         self.apresenta_resultado()
-
-    def reinicia_round(self):
-        if ts.jogo.pontos_do_round_jogador_1 >= 2 or ts.jogo.pontos_do_round_jogador_2 >= 2:
-            self.jogo.inicia_round()        
-            self.criar_botões()
-            self.receber_imagens_jogador_1()
-            self.receber_imagens_jogador_2()
-            self.start()
-        
+    
+    # Inicia jogo    
     def start(self):
-        self.reinicia_round()        
         self.receber_imagens_jogador_1()
         self.receber_imagens_jogador_2()
         self.screen.mainloop()
-            
+        
+    # Atualiza os pontos dos jogadores       
     def apresenta_resultado(self):
         self.resultado1.configure(text= self.jogo.pontos_do_round_jogador_1)
         self.resultado2.configure(text= self.jogo.pontos_do_round_jogador_2)
+        # Reinicia round
         if self.jogo.pontos_do_round_jogador_1 > 1 or self.jogo.pontos_do_round_jogador_2 > 1:
             resultado = messagebox.askyesno(title= "Fim do round", message= "Deseja reiniciar o round")
             if resultado == True:
@@ -284,5 +263,3 @@ class Screen:
                 
 app = Screen()
 app.start()
-
-#print("Jogador {0} venceu!".format(ts.Jogo.resultado))
