@@ -122,7 +122,7 @@ class Jogo:
                     print("Jogador 2 ganhou o round")
                     self.pontos_2 += 1
                     self.jogador = 2
-                self.inicia_round()
+#                self.inicia_round()
                 
                 if self.pontos_1 == 12:
                     self.resultado = 1

@@ -1,3 +1,4 @@
+from tkinter import messagebox
 import tkinter as tk
 import truco_simples as ts
 
@@ -273,9 +274,15 @@ class Screen:
     def apresenta_resultado(self):
         self.resultado1.configure(text= self.jogo.pontos_do_round_jogador_1)
         self.resultado2.configure(text= self.jogo.pontos_do_round_jogador_2)
-
+        if self.jogo.pontos_do_round_jogador_1 > 1 or self.jogo.pontos_do_round_jogador_2 > 1:
+            resultado = messagebox.askyesno(title= "Fim do round", message= "Deseja reiniciar o round")
+            if resultado == True:
+                self.jogo.inicia_round()
+                self.criar_botões()
+                self.receber_imagens_jogador_1()
+                self.receber_imagens_jogador_2()
+                
 app = Screen()
-
 app.start()
 
 #print("Jogador {0} venceu!".format(ts.Jogo.resultado))
